@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PushyApp">
         <activity
+            android:name=".Level_finished"
+            android:exported="false" />
+        <activity
             android:name=".Splashscreen"
             android:exported="true">
             <intent-filter>
@@ -20,9 +23,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
     </application>
 
 </manifest>

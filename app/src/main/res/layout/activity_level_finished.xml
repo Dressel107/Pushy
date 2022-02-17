@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/green2"
-    tools:context=".Level_finished">
+    tools:context=".Activities.LevelFinishedActivity">
 
     <Button
         android:id="@+id/btn_select_level"

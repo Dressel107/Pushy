@@ -9,25 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PushyApp" >
+
+        <activity
+            android:name=".Activities.MainActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".Activities.LevelFinishedActivity"
+            android:exported="false" />
+
         <activity
             android:name=".Activities.LevelSelectionActivity"
             android:exported="false" />
+
         <activity
-            android:name=".Activities.MainActivity"
-            android:exported="true" >
-            android:name=".Level_finished"
-            android:exported="false" />
-        <activity
-            android:name=".Splashscreen"
+            android:name=".Activities.Splashscreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="false"></activity>
     </application>
-
 </manifest>

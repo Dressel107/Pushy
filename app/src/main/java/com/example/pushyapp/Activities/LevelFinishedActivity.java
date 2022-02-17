@@ -1,4 +1,4 @@
-package com.example.pushyapp;
+package com.example.pushyapp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Level_finished extends AppCompatActivity  {
+import com.example.pushyapp.R;
+
+public class LevelFinishedActivity extends AppCompatActivity  {
     Button btnSelectLevel;
     Button btnNextLevel;
 
@@ -23,7 +25,7 @@ public class Level_finished extends AppCompatActivity  {
         btnSelectLevel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Level_finished.this, MainActivity.class);
+                Intent intent = new Intent(LevelFinishedActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -31,7 +33,7 @@ public class Level_finished extends AppCompatActivity  {
         btnNextLevel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Level_finished.this, MainActivity.class);
+                Intent intent = new Intent(LevelFinishedActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

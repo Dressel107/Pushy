@@ -1,10 +1,12 @@
-package com.example.pushyapp;
+package com.example.pushyapp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.example.pushyapp.R;
 
 public class Splashscreen extends AppCompatActivity {
 
@@ -17,7 +19,7 @@ public class Splashscreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(Splashscreen.this, Level_finished.class);
+                Intent intent = new Intent(Splashscreen.this, LevelFinishedActivity.class);
                 startActivity(intent);
                 finish();
             }

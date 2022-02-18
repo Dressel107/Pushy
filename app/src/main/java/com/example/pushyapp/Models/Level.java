@@ -1,19 +1,26 @@
 package com.example.pushyapp.Models;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Level
 {
-    // Gibt die Nummer des Levels an.
-    private int number;
+    // Gibt die ID des Levels an.
+    @PrimaryKey
+    private int id;
 
     // Gibt an, wie viele Sekunden der Spieler für das Lösen des Levels benötigt hat.
+    @ColumnInfo(name = "duration")
     private int durationInSeconds;
 
     // Gibt an, ob der Spieler das Level geschafft hat.
     private boolean hasFinished;
 
-    public Level(int number, int durationInSeconds)
+    public Level(int id, int durationInSeconds)
     {
-        this.number = number;
+        this.id = id;
         this.durationInSeconds = durationInSeconds;
 
         if (durationInSeconds > 0)
@@ -26,8 +33,8 @@ public class Level
         }
     }
 
-    public int getNumber() {
-        return number;
+    public int getId() {
+        return id;
     }
 
     public int getDurationInSeconds() {

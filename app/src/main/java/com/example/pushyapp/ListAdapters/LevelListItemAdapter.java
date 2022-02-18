@@ -15,9 +15,9 @@ import java.util.ArrayList;
 public class LevelListItemAdapter extends ArrayAdapter<Level>
 {
     private final Activity context;
-    private final ArrayList<Level> levels;
+    private final Level[] levels;
 
-    public LevelListItemAdapter(Activity context, ArrayList<Level> levels)
+    public LevelListItemAdapter(Activity context, Level[] levels)
     {
         super(context, R.layout.level_selection_item, levels);
 
@@ -33,10 +33,10 @@ public class LevelListItemAdapter extends ArrayAdapter<Level>
         TextView titleText = (TextView) rowView.findViewById(R.id.level_title);
         TextView neededTimeText = (TextView) rowView.findViewById(R.id.level_needed_time);
 
-        titleText.setText("Level " + levels.get(position).getNumber());
+        titleText.setText("Level " + levels[position].getId());
 
         String durationText;
-        int duration = levels.get(position).getDurationInSeconds();
+        int duration = levels[position].getDurationInSeconds();
 
         if (duration == 0)
         {

@@ -40,7 +40,7 @@ public class Gamefield
 
     public void drawGamefield()
     {
-
+        this.canvas.drawRect();
 
         imageView.invalidate();
     }

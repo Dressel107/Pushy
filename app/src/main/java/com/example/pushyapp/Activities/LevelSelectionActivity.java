@@ -2,6 +2,7 @@ package com.example.pushyapp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -42,6 +43,11 @@ public class LevelSelectionActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id)
             {
                 System.out.println("Level " + position + " ausgewählt.");
+                switch (position){
+                    case 0:
+                        Intent intent = new Intent(LevelSelectionActivity.this, LevelOneActivity.class);
+                        startActivity(intent);
+                }
             }
         });
     }

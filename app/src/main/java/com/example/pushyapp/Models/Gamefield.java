@@ -18,16 +18,7 @@ import com.example.pushyapp.R;
 
 public class Gamefield extends AppCompatActivity
 {
-    private final int MARGIN = 8;
 
-    private ImageView imageView;
-    private Bitmap bitmap;
-    private Canvas canvas;
-    private Paint paint;
-
-    private GameElement[][] elements;
-    private int screenWidth;
-    private int screenHeight;
 
     public Gamefield(AppCompatActivity activity, GameElement[][] elements)
     {
@@ -36,10 +27,5 @@ public class Gamefield extends AppCompatActivity
 
 
 
-    public void drawGamefield()
-    {
 
-
-        imageView.invalidate();
-    }
 }

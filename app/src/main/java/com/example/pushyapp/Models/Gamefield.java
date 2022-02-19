@@ -2,7 +2,9 @@ package com.example.pushyapp.Models;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.view.MotionEvent;
 import android.view.View;
@@ -11,8 +13,10 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pushyapp.Models.GameElements.GameElement;
+import com.example.pushyapp.Models.GameElements.Wall;
+import com.example.pushyapp.R;
 
-public class Gamefield
+public class Gamefield extends AppCompatActivity
 {
     private final int MARGIN = 8;
 
@@ -27,20 +31,14 @@ public class Gamefield
 
     public Gamefield(AppCompatActivity activity, GameElement[][] elements)
     {
-        this.elements = elements;
-        this.screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
-        this.screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
 
-        this.bitmap = Bitmap.createBitmap(this.screenWidth, this.screenHeight, Bitmap.Config.ARGB_8888);
-        this.canvas = new Canvas(this.bitmap);
-        this.imageView = new ImageView(activity);
-        this.imageView.setImageBitmap(this.bitmap);
-        this.paint = new Paint();
     }
+
+
 
     public void drawGamefield()
     {
-        this.canvas.drawRect();
+
 
         imageView.invalidate();
     }

@@ -17,12 +17,12 @@ public class LevelListItemAdapter extends ArrayAdapter<Level>
     private final Activity context;
     private final Level[] levels;
 
-    public LevelListItemAdapter(Activity context, Level[] levels)
+    public LevelListItemAdapter(Activity context, ArrayList<Level> levels)
     {
         super(context, R.layout.level_selection_item, levels);
 
         this.context = context;
-        this.levels = levels;
+        this.levels = levels.toArray(new Level[0]);
     }
 
     public View getView(int position, View view, ViewGroup parent)

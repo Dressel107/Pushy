@@ -2,12 +2,16 @@ package com.example.pushyapp.Models.GameElements;
 
 import android.graphics.Bitmap;
 
+import com.example.pushyapp.R;
+
 public class GameElement
 {
     private float x;
     private float y;
+    private float size;
     private boolean isVisible;
     private Bitmap bitmap;
+
 
     public GameElement(String bitmapSource)
     {

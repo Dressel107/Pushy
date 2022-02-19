@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.pushyapp.R;
+import com.example.pushyapp.Services.AppDatabaseHandler;
 
 public class LevelFinishedActivity extends AppCompatActivity  {
     Button btnSelectLevel;
@@ -35,9 +36,9 @@ public class LevelFinishedActivity extends AppCompatActivity  {
             public void onClick(View view) {
                 Intent intent = new Intent(LevelFinishedActivity.this, MainActivity.class);
                 startActivity(intent);
+
+
             }
         });
-
-
     }
 }

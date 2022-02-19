@@ -37,6 +37,7 @@ public class LevelSelectionActivity extends AppCompatActivity
         levels[2] = level3;
 
         LevelListItemAdapter adapter = new LevelListItemAdapter(this, levels);
+
         list=(ListView)findViewById(R.id.level_selection_listView);
         list.setAdapter(adapter);
 

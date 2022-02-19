@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.pushyapp.Models.GameElements.GameElement;
 import com.example.pushyapp.Models.GameElements.Goal;
 import com.example.pushyapp.Models.GameElements.Key;
 import com.example.pushyapp.Models.GameElements.Wall;
@@ -19,6 +20,7 @@ import com.example.pushyapp.R;
 
 
 public class Presenter extends AppCompatActivity {
+    private AppCompatActivity activity;
     private ImageView imageView;
     private Bitmap bitmap;
     private Canvas canvas;
@@ -38,6 +40,7 @@ public class Presenter extends AppCompatActivity {
         this.screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
         this.screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
 
+        this.activity = activity;
         this.bitmap = Bitmap.createBitmap(this.screenWidth, this.screenHeight, Bitmap.Config.ARGB_8888);
         this.canvas = new Canvas(this.bitmap);
         this.imageView = new ImageView(activity);
@@ -50,6 +53,13 @@ public class Presenter extends AppCompatActivity {
 
 
         activity.setContentView(this.imageView);
+    }
+
+    public void draw(GameElement g, int left, int top){
+        Bitmap bm = BitmapFactory.decodeResource(this.activity.getResources(), g.getRes());
+        Rect dst = new Rect(left,top,(left+100),(top+100));
+        this.canvas.drawBitmap(bm, srcRect, dst,null);
+        imageView.invalidate();
     }
 
     public void draw(Wall wall, int left, int top){
@@ -70,11 +80,11 @@ public class Presenter extends AppCompatActivity {
         imageView.invalidate();
     }
 
-    public void draw(WoodenBox woodenBox, int left, int top){
-        Rect dst = new Rect(left,top,(left+100),(top+100));
-        this.canvas.drawBitmap(this.woodenBox, srcRect, dst,null);
-        imageView.invalidate();
-    }
+//    public void draw(WoodenBox woodenBox, int left, int top){
+//        Rect dst = new Rect(left,top,(left+100),(top+100));
+//        this.canvas.drawBitmap(this.woodenBox, srcRect, dst,null);
+//        imageView.invalidate();
+//    }
 
     //Wandelt PNG-Dateien aus den Resources in Bitmaps um
     private void makeBitmaps(AppCompatActivity activity){

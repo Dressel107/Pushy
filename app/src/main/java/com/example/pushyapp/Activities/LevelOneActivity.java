@@ -26,17 +26,20 @@ public class LevelOneActivity extends AppCompatActivity {
 
         Presenter p = new Presenter(this);
 
-        Wall w = new Wall();
-        p.draw(w,0,200);
+        WoodenBox w = new WoodenBox();
+        p.draw(w, 0, 100);
 
-        Goal g = new Goal();
-        p.draw(g,100, 200);
-
-        Key k = new Key();
-        p.draw(k, 200, 200);
-
-        WoodenBox wb = new WoodenBox();
-        p.draw(wb,300,200);
+//        Wall w = new Wall();
+//        p.draw(w,0,200);
+//
+//        Goal g = new Goal();
+//        p.draw(g,0, 200);
+//
+//        Key k = new Key();
+//        p.draw(k, 200, 200);
+//
+//        WoodenBox wb = new WoodenBox();
+//        p.draw(wb,300,200);
 
 
 

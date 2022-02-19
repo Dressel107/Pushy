@@ -2,17 +2,21 @@ package com.example.pushyapp.Models.GameElements;
 
 import android.graphics.Bitmap;
 
+import com.example.pushyapp.R;
+
 public class GameElement
 {
     private float x;
     private float y;
     private boolean isVisible;
-    private Bitmap bitmap;
+    private int res = R.drawable.woodenbox;
 
     public GameElement(String bitmapSource)
     {
 
     }
+
+    public GameElement(int bitmap){};
 
     public float getX()
     {
@@ -42,5 +46,8 @@ public class GameElement
     public void setVisible(boolean visible)
     {
         isVisible = visible;
+    }
+    public int getRes() {
+        return res;
     }
 }

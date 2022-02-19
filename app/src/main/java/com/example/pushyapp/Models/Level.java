@@ -4,6 +4,9 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.pushyapp.Models.GameElements.GameElement;
+import com.example.pushyapp.Models.GameElements.Wall;
+
 @Entity
 public class Level
 {

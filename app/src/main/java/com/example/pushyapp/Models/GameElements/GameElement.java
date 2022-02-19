@@ -8,8 +8,10 @@ public class GameElement
 {
     private float x;
     private float y;
+    private float size;
     private boolean isVisible;
     private int res = R.drawable.woodenbox;
+
 
     public GameElement(String bitmapSource)
     {

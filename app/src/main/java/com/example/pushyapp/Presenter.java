@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.widget.ImageView;
 
@@ -49,7 +50,7 @@ public class Presenter extends AppCompatActivity {
 
         this.makeBitmaps(activity);
 
-        this.srcRect =  new Rect(0, 0, bmWall.getWidth(), bmWall.getHeight());
+        this.srcRect =  new Rect(0, 0, bmGoal.getWidth(), bmGoal.getHeight());
 
 
         activity.setContentView(this.imageView);
@@ -62,33 +63,14 @@ public class Presenter extends AppCompatActivity {
         imageView.invalidate();
     }
 
-    public void draw(Wall wall, int left, int top){
-        Rect dst = new Rect(left,top,(left+100),(top+100));
-        this.canvas.drawBitmap(this.bmWall, srcRect, dst,null);
-        imageView.invalidate();
+    public void clear()   {
+        this.canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
     }
 
-    public void draw(Goal goal, int left, int top){
-        Rect dst = new Rect(left,top,(left+100),(top+100));
-        this.canvas.drawBitmap(this.bmGoal, srcRect, dst,null);
-        imageView.invalidate();
-    }
-
-    public void draw(Key key, int left, int top){
-        Rect dst = new Rect(left,top,(left+100),(top+100));
-        this.canvas.drawBitmap(this.bmKey, srcRect, dst,null);
-        imageView.invalidate();
-    }
-
-//    public void draw(WoodenBox woodenBox, int left, int top){
-//        Rect dst = new Rect(left,top,(left+100),(top+100));
-//        this.canvas.drawBitmap(this.woodenBox, srcRect, dst,null);
-//        imageView.invalidate();
-//    }
 
     //Wandelt PNG-Dateien aus den Resources in Bitmaps um
     private void makeBitmaps(AppCompatActivity activity){
-        this.bmWall = BitmapFactory.decodeResource(activity.getResources(), R.drawable.wallps);
+//        this.bmWall = BitmapFactory.decodeResource(activity.getResources(), R.drawable.wallps);
         this.bmGoal = BitmapFactory.decodeResource(activity.getResources(), R.drawable.goal);
         this.bmKey = BitmapFactory.decodeResource(activity.getResources(), R.drawable.key);
         this.woodenBox = BitmapFactory.decodeResource(activity.getResources(),R.drawable.woodenbox);

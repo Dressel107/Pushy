@@ -9,7 +9,7 @@ public class ColorSplash extends GameElement implements Accessible
 
     public ColorSplash()
     {
-        super(BITMAP_SOURCE);
+        super();
     }
 
     public void dye(ColorSphere sphere)

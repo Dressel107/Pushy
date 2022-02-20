@@ -10,7 +10,7 @@ public class Player extends GameElement implements Movable, Accessible
 
     public Player()
     {
-        super(BITMAP_SOURCE);
+        super();
     }
 
     public void collectKey()

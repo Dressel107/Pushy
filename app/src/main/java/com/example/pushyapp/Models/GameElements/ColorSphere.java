@@ -11,7 +11,7 @@ public class ColorSphere extends GameElement implements Movable, Accessible
 
     public ColorSphere()
     {
-        super(BITMAP_SOURCE);
+        super();
     }
 
     public Color getColor()

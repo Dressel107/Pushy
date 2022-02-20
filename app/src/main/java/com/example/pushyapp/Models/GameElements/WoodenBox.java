@@ -4,13 +4,13 @@ import com.example.pushyapp.R;
 
 public class WoodenBox extends GameElement implements Movable
 {
-    private static final String BITMAP_SOURCE = "WoodenBox.png";
-
+    private static final int res = R.drawable.woodenbox;
 
     public WoodenBox()
     {
-        super(BITMAP_SOURCE);
+        super(res);
     }
+
 
 
 }

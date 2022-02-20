@@ -1,11 +1,12 @@
 package com.example.pushyapp.Models.GameElements;
 
+import com.example.pushyapp.R;
+
 public class Key extends GameElement implements Accessible
 {
-    private static final String BITMAP_SOURCE = "Key.png";
-
+    private static final int res = R.drawable.key;
     public Key()
     {
-        super(BITMAP_SOURCE);
+        super(res);
     }
 }

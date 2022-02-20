@@ -9,6 +9,6 @@ public class ColorArea extends GameElement implements Accessible
 
     public ColorArea()
     {
-        super(BITMAP_SOURCE);
+        super();
     }
 }

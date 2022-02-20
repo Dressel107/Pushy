@@ -1,13 +1,15 @@
 package com.example.pushyapp.Models.GameElements;
 
+import com.example.pushyapp.R;
+
 public class Gate extends GameElement implements Accessible
 {
-    private static final String BITMAP_SOURCE = "Gate.png";
+    private static final int res = R.drawable.gate;
     private boolean isOpen;
 
     public Gate()
     {
-        super(BITMAP_SOURCE);
+        super(res);
     }
 
     public void open()

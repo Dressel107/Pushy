@@ -1,16 +1,17 @@
 package com.example.pushyapp.Models.GameElements;
 
 import com.example.pushyapp.Enums.Direction;
+import com.example.pushyapp.R;
 
 public class Player extends GameElement implements Movable, Accessible
 {
-    private static final String BITMAP_SOURCE = "Pushy.png";
+    private static final int res = R.drawable.player;
     private Direction lookDirection;
     private int keysCount;
 
     public Player()
     {
-        super();
+        super(res);
     }
 
     public void collectKey()

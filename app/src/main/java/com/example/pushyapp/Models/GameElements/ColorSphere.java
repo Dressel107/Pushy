@@ -5,13 +5,14 @@ import com.example.pushyapp.R;
 
 public class ColorSphere extends GameElement implements Movable, Accessible
 {
-    private static final String BITMAP_SOURCE = "ColorSphere.png";
+    private static final int res = R.drawable.colorsphere;
+    private static final int res2 = R.drawable.colorsphere_red;
 
     private Color color;
 
     public ColorSphere()
     {
-        super();
+        super(res);
     }
 
     public Color getColor()

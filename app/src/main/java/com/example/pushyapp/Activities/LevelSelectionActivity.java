@@ -46,7 +46,7 @@ public class LevelSelectionActivity extends AppCompatActivity
                 System.out.println("Level " + position + " ausgewählt.");
                 switch (position){
                     case 0:
-                        Intent intent = new Intent(LevelSelectionActivity.this, LevelOneActivity.class);
+                        Intent intent = new Intent(LevelSelectionActivity.this, GamefieldActivity.class);
                         startActivity(intent);
                 }
             }

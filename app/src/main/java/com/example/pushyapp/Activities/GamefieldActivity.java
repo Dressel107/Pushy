@@ -3,13 +3,9 @@ package com.example.pushyapp.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
 import android.os.Bundle;
-import android.widget.ImageView;
 
+import com.example.pushyapp.Models.GameController;
 import com.example.pushyapp.Models.GameElements.ColorArea;
 import com.example.pushyapp.Models.GameElements.ColorSphere;
 import com.example.pushyapp.Models.GameElements.ColorSplash;
@@ -21,26 +17,25 @@ import com.example.pushyapp.Models.GameElements.Key;
 import com.example.pushyapp.Models.GameElements.Player;
 import com.example.pushyapp.Models.GameElements.Wall;
 import com.example.pushyapp.Models.GameElements.WoodenBox;
-import com.example.pushyapp.Models.Gamefield;
+import com.example.pushyapp.Models.Level;
 import com.example.pushyapp.Presenter;
-import com.example.pushyapp.R;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.ArrayList;
 
 
-public class LevelOneActivity extends AppCompatActivity {
+public class GamefieldActivity extends AppCompatActivity {
 
-    private Presenter p;
-
-
-
+    private GameController controller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-          this.p = new Presenter(this);
+        // TODO: Id aus Intent holen
+        Level level = new Level(0, 0);
+        this.controller = new GameController(this, level);
+
+
 //        GameElement [][][]test =
 //                {{{new Wall(0,0),  new Wall(100,0)},
 //                        {new Wall(0,100),new Wall(100,100)},
@@ -82,35 +77,57 @@ public class LevelOneActivity extends AppCompatActivity {
 //        p.draw(gamefield);
 //
 //
-        Wall w = new Wall();
-        p.draw(w,0,200);
-
-        Goal g = new Goal();
-        p.draw(g,100, 200);
-
-        Key k = new Key();
-        p.draw(k, 200, 200);
-
-        WoodenBox wb = new WoodenBox();
-        p.draw(wb,300,200);
-
-        Gate gate = new Gate();
-        p.draw(gate, 400, 200);
-
-        ColorSplash colorsplash = new ColorSplash();
-        p.draw(colorsplash, 500, 200);
-
-        ColorArea colorArea = new ColorArea();
-        p.draw(colorArea, 600, 200);
-
-        ColorSphere colorSphere = new ColorSphere();
-        p.draw(colorSphere,700,200);
-
-        Player player = new Player();
-        p.draw(player, 800, 200);
-
-        Floor floor = new Floor();
-        p.draw(floor, 900, 200);
+//        Wall w = new Wall();
+//        p.draw(w,0,200);
+//
+//        Goal g = new Goal();
+//        p.draw(g,100, 200);
+//
+//        Key k = new Key();
+//        p.draw(k, 200, 200);
+//
+//        WoodenBox wb = new WoodenBox();
+//        p.draw(wb,300,200);
+//
+//        Gate gate = new Gate();
+//        p.draw(gate, 400, 200);
+//
+//        ColorSplash colorsplash = new ColorSplash();
+//        p.draw(colorsplash, 500, 200);
+//
+//        ColorArea colorArea = new ColorArea();
+//        p.draw(colorArea, 600, 200);
+//
+//        ColorSphere colorSphere = new ColorSphere();
+//        p.draw(colorSphere,700,200);
+//
+//        Player player = new Player();
+//        p.draw(player, 800, 200);
+//
+//        Floor floor = new Floor();
+//        p.draw(floor, 900, 200);
+//
+//
+//        ArrayList<GameElement> elements = new ArrayList<>();
+//        elements.add(new Wall(0,0));
+//        elements.add(new Wall(1,0));
+//        elements.add(new Wall(2,0));
+//        elements.add(new Wall(3,0));
+//        elements.add(new Wall(3,0));
+//        elements.add(new Wall(3,0));
+//        elements.add(new Wall(3,0));
+//        elements.add(new Wall(3,0));
+//        elements.add(new Wall(3,0));
+//        elements.add(new Wall(3,0));
+//        elements.add(new Wall(3,0));
+//        elements.add(new Wall(3,0));
+//        elements.add(new Wall(3,0));
+//        elements.add(new Wall(3,0));
+//
+//
+//
+//
+//        String level1 = "wwwwwwwwwwww\nwfffhfffff";
 
 
 

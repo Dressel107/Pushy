@@ -11,6 +11,8 @@ public class WoodenBox extends GameElement implements Movable
         super(res);
     }
 
-
-
+    public WoodenBox(int x, int y)
+    {
+        super(x, y, res);
+    }
 }

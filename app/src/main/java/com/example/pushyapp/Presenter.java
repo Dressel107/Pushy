@@ -13,12 +13,8 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pushyapp.Models.GameElements.GameElement;
-import com.example.pushyapp.Models.GameElements.Goal;
-import com.example.pushyapp.Models.GameElements.Key;
-import com.example.pushyapp.Models.GameElements.Wall;
-import com.example.pushyapp.Models.GameElements.WoodenBox;
-import com.example.pushyapp.Models.Gamefield;
-import com.example.pushyapp.R;
+
+import java.util.ArrayList;
 
 
 public class Presenter extends AppCompatActivity {
@@ -31,6 +27,10 @@ public class Presenter extends AppCompatActivity {
     private int screenWidth;
     private int screenHeight;
 
+    private ArrayList<GameElement> gameElements;
+    private int horizontalFieldsCount;
+    private int verticalFieldsCount;
+
 
     private  Rect srcRect;
 
@@ -38,9 +38,13 @@ public class Presenter extends AppCompatActivity {
 
 
 
-    public Presenter(AppCompatActivity activity) {
+    public Presenter(AppCompatActivity activity, ArrayList<GameElement> elements, int horizontalFieldsCount, int verticalFieldsCount) {
         this.screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
         this.screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
+
+        this.gameElements = elements;
+        this.horizontalFieldsCount = horizontalFieldsCount;
+        this.verticalFieldsCount = verticalFieldsCount;
 
         this.activity = activity;
         this.bitmap = Bitmap.createBitmap(this.screenWidth, this.screenHeight, Bitmap.Config.ARGB_8888);
@@ -62,19 +66,6 @@ public class Presenter extends AppCompatActivity {
         Rect dst = new Rect(left,top,(left+100),(top+100));
         this.canvas.drawBitmap(bm, srcRect, dst,null);
         imageView.invalidate();
-    }
-
-    public void draw(Gamefield gamefield){
-        GameElement [][][] gameElements = gamefield.getGameElements();
-        for(int i = 0; i < gameElements.length; i++){
-            for(int j = 0; j < gameElements[i].length; j++){
-                for (int k = 0; k < gameElements[i][j].length; k++){
-                    if(gameElements[i][j][k] != null) {
-                        draw(gameElements[i][j][k], (int) gameElements[i][j][k].getX(), (int) gameElements[i][j][k].getY());
-                    }
-                }
-            }
-        }
     }
 
     public void clear()   {

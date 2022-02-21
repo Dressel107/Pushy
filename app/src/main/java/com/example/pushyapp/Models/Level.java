@@ -7,6 +7,8 @@ import androidx.room.PrimaryKey;
 import com.example.pushyapp.Models.GameElements.GameElement;
 import com.example.pushyapp.Models.GameElements.Wall;
 
+import java.util.ArrayList;
+
 @Entity
 public class Level
 {
@@ -21,6 +23,8 @@ public class Level
     // Gibt an, ob der Spieler das Level geschafft hat.
     private boolean hasFinished;
 
+    private ArrayList<GameElement> elements;
+
     public Level(int id, int durationInSeconds)
     {
         this.id = id;
@@ -34,6 +38,8 @@ public class Level
         {
             hasFinished = false;
         }
+
+        elements = LevelPool.levels.get(id);
     }
 
     public int getId() {
@@ -54,5 +60,9 @@ public class Level
 
     public void setHasFinished(boolean hasFinished) {
         this.hasFinished = hasFinished;
+    }
+
+    public ArrayList<GameElement> getElements() {
+        return elements;
     }
 }

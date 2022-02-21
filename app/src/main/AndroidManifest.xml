@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PushyApp" >
         <activity
-            android:name=".Activities.LevelOneActivity"
+            android:name=".Activities.GamefieldActivity"
             android:exported="false" />
         <activity
             android:name=".Activities.MainActivity"

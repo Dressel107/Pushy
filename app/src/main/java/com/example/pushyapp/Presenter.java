@@ -17,6 +17,7 @@ import com.example.pushyapp.Models.GameElements.Goal;
 import com.example.pushyapp.Models.GameElements.Key;
 import com.example.pushyapp.Models.GameElements.Wall;
 import com.example.pushyapp.Models.GameElements.WoodenBox;
+import com.example.pushyapp.Models.Gamefield;
 import com.example.pushyapp.R;
 
 
@@ -61,6 +62,19 @@ public class Presenter extends AppCompatActivity {
         Rect dst = new Rect(left,top,(left+100),(top+100));
         this.canvas.drawBitmap(bm, srcRect, dst,null);
         imageView.invalidate();
+    }
+
+    public void draw(Gamefield gamefield){
+        GameElement [][][] gameElements = gamefield.getGameElements();
+        for(int i = 0; i < gameElements.length; i++){
+            for(int j = 0; j < gameElements[i].length; j++){
+                for (int k = 0; k < gameElements[i][j].length; k++){
+                    if(gameElements[i][j][k] != null) {
+                        draw(gameElements[i][j][k], (int) gameElements[i][j][k].getX(), (int) gameElements[i][j][k].getY());
+                    }
+                }
+            }
+        }
     }
 
     public void clear()   {

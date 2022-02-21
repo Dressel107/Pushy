@@ -9,4 +9,8 @@ public class Floor extends GameElement implements Accessible{
     {
         super(res);
     }
+
+    public Floor(int x, int y){
+        super(x,y,res);
+    }
 }

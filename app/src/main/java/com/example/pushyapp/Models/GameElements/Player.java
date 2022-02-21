@@ -14,6 +14,10 @@ public class Player extends GameElement implements Movable, Accessible
         super(res);
     }
 
+    public Player(int x, int y){
+        super(x,y,res);
+    }
+
     public void collectKey()
     {
         this.keysCount++;

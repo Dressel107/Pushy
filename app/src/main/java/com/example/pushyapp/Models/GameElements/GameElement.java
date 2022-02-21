@@ -16,6 +16,19 @@ public class GameElement
 
     }
 
+    public GameElement(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+
+    public GameElement(int x, int y, int res){
+        this.x = x;
+        this.y = y;
+        this.res = res;
+    }
+
+
+
     public GameElement(int res){
         this.res = res;
     }

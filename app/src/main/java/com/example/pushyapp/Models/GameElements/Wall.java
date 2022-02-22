@@ -17,4 +17,9 @@ public class Wall extends GameElement
     public Wall(int x, int y){
         super(x,y,res);
     }
+
+    public Wall(float x, float y, float size){
+       super(x, y, size, res);
+
+    }
 }

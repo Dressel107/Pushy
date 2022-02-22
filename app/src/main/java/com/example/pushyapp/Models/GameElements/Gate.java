@@ -5,6 +5,7 @@ import com.example.pushyapp.R;
 public class Gate extends GameElement implements Interactable, Accessible
 {
     private static final int res = R.drawable.gate;
+    private static final int res2 = R.drawable.gate_open;
     private boolean isOpen;
 
     public Gate()

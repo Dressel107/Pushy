@@ -3,6 +3,7 @@
     package="com.example.pushyapp" >
 
     <application
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,7 +12,9 @@
         android:theme="@style/Theme.PushyApp" >
         <activity
             android:name=".Activities.GamefieldActivity"
-            android:exported="false" />
+            android:exported="false"
+            />
+
         <activity
             android:name=".Activities.MainActivity"
             android:exported="true" />

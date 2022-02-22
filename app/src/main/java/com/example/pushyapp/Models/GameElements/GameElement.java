@@ -4,6 +4,7 @@ package com.example.pushyapp.Models.GameElements;
 
 public class GameElement
 {
+
     private float x;
     private float y;
     private float size;
@@ -16,9 +17,17 @@ public class GameElement
 
     }
 
-    public GameElement(int x, int y){
+    public GameElement(float x, float y){
         this.x = x;
         this.y = y;
+    }
+
+    public GameElement(float x, float y, float size, int res){
+        this.x = x;
+        this.y = y;
+        this.size = size;
+        this.res = res;
+
     }
 
     public GameElement(int x, int y, int res){
@@ -53,6 +62,10 @@ public class GameElement
     public void setY(float y)
     {
         this.y = y;
+    }
+
+    public float getSize() {
+        return size;
     }
 
     public void setRes(int res) {

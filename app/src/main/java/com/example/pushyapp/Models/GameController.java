@@ -18,7 +18,8 @@ public class GameController
 
     public GameController(AppCompatActivity activity, Level level)
     {
-        presenter = new Presenter(activity, level.getElements(), HORIZONTAL_FIELD_COUNT, VERTICAL_FIELD_COUNT);
+        //presenter = new Presenter(activity, level.getElements(), HORIZONTAL_FIELD_COUNT, VERTICAL_FIELD_COUNT);
+
     }
 
     private void playerMoved(Direction direction)

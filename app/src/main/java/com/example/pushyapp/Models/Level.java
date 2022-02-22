@@ -23,7 +23,7 @@ public class Level
     // Gibt an, ob der Spieler das Level geschafft hat.
     private boolean hasFinished;
 
-    private ArrayList<GameElement> elements;
+   // private ArrayList<GameElement> elements;
 
     public Level(int id, int durationInSeconds)
     {
@@ -39,7 +39,7 @@ public class Level
             hasFinished = false;
         }
 
-        elements = LevelPool.levels.get(id);
+       // elements = LevelPool.levels.get(id);
     }
 
     public int getId() {
@@ -62,7 +62,7 @@ public class Level
         this.hasFinished = hasFinished;
     }
 
-    public ArrayList<GameElement> getElements() {
-        return elements;
-    }
+//    public ArrayList<GameElement> getElements() {
+//        return elements;
+//    }
 }

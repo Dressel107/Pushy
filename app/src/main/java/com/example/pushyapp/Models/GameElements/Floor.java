@@ -13,4 +13,9 @@ public class Floor extends GameElement implements Accessible{
     public Floor(int x, int y){
         super(x,y,res);
     }
+
+    public Floor(float x, float y, float size){
+        super(x, y, size, res);
+
+    }
 }

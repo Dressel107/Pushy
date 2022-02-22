@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class Presenter extends AppCompatActivity {
     private AppCompatActivity activity;
-    private ImageView imageView;
+    public ImageView imageView;
     private Bitmap bitmap;
     private Canvas canvas;
     private Paint paint;

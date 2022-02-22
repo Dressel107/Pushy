@@ -9,12 +9,15 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.pushyapp.Activities.GamefieldActivity;
 import com.example.pushyapp.Models.GameElements.Floor;
 import com.example.pushyapp.Models.GameElements.GameElement;
 import com.example.pushyapp.Models.GameElements.Wall;
+import com.example.pushyapp.Services.OnSwipeTouchListener;
 
 import java.util.ArrayList;
 
@@ -50,6 +53,23 @@ public class Presenter extends AppCompatActivity {
         this.paint = new Paint();
 
         activity.setContentView(this.imageView);
+
+
+        this.imageView.setOnTouchListener(new OnSwipeTouchListener(this) {
+            public void onSwipeTop() {
+                Toast.makeText(activity, "top", Toast.LENGTH_SHORT).show();
+            }
+            public void onSwipeRight() {
+                Toast.makeText(activity, "right", Toast.LENGTH_SHORT).show();
+            }
+            public void onSwipeLeft() {
+                Toast.makeText(activity, "left", Toast.LENGTH_SHORT).show();
+            }
+            public void onSwipeBottom() {
+                Toast.makeText(activity, "bottom", Toast.LENGTH_SHORT).show();
+            }
+
+        });
     }
 
     public void draw(GameElement gameElement,  int top, int left){

@@ -19,4 +19,9 @@ public class Floor extends GameElement implements Accessible{
 
 >>>>>>> Stashed changes
     }
+
+    public Floor(float x, float y, float size){
+        super(x, y, size, res);
+
+    }
 }

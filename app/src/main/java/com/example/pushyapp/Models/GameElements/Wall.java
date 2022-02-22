@@ -14,16 +14,12 @@ public class Wall extends GameElement
         super(res);
     }
 
-    public Wall(int x, int y)
-    {
+    public Wall(int x, int y){
         super(x,y,res);
     }
-<<<<<<< Updated upstream
-=======
 
-    public Wall(int x, int y, float size)
-    {
+    public Wall(float x, float y, float size){
        super(x, y, size, res);
+
     }
->>>>>>> Stashed changes
 }

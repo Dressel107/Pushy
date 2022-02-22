@@ -2,6 +2,7 @@ package com.example.pushyapp.Models;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.example.pushyapp.Models.GameElements.GameElement;
@@ -22,11 +23,11 @@ public class Level
     private int durationInSeconds;
 
     // Gibt an, ob der Spieler das Level geschafft hat.
+    @Ignore
     private boolean hasFinished;
 
+    @Ignore
     private ArrayList<GameElement> elements;
-    private int playerXPosition;
-    private int playerYPosition;
 
     public Level(int id, int durationInSeconds)
     {
@@ -43,8 +44,6 @@ public class Level
         }
 
         elements = LevelPool.levels.get(id);
-        playerXPosition = 5;
-        playerYPosition = 5;
     }
 
     public int getId() {
@@ -69,13 +68,5 @@ public class Level
 
     public ArrayList<GameElement> getElements() {
         return elements;
-    }
-
-    public int getPlayerXPosition() {
-        return playerXPosition;
-    }
-
-    public int getPlayerYPosition() {
-        return playerYPosition;
     }
 }

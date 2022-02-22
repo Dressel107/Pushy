@@ -9,13 +9,14 @@ public class Player extends GameElement implements Movable, Accessible
     private Direction lookDirection;
     private int keysCount;
 
-    public Player()
+    public Player(int x, int y)
     {
-        super(res);
+        super(x, y, res);
     }
 
-    public Player(int x, int y){
-        super(x,y,res);
+    public Player(int x, int y, float size)
+    {
+        super(x, y, size, res);
     }
 
     public void collectKey()

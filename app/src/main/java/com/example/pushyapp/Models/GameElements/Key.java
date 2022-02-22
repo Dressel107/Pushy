@@ -9,9 +9,14 @@ public class Key extends GameElement implements Interactable, Movable, Collectib
 {
     private static final int res = R.drawable.key;
 
-    public Key()
+    public Key(int x, int y)
     {
-        super(res);
+        super(x, y, res);
+    }
+
+    public Key(int x, int y, float size)
+    {
+        super(x, y, size, res);
     }
 
     @Override

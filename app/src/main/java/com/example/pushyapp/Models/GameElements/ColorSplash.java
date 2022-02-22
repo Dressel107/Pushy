@@ -10,9 +10,14 @@ public class ColorSplash extends GameElement implements Interactable, Accessible
 
     private Color color;
 
-    public ColorSplash()
+    public ColorSplash(int x, int y)
     {
-        super(res);
+        super(x, y, res);
+    }
+
+    public ColorSplash(int x, int y, float size)
+    {
+        super(x, y, size, res);
     }
 
     public void dye(ColorSphere sphere)

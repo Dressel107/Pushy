@@ -8,9 +8,14 @@ public class Gate extends GameElement implements Interactable, Accessible
     private static final int res2 = R.drawable.gate_open;
     private boolean isOpen;
 
-    public Gate()
+    public Gate(int x, int y)
     {
-        super(res);
+        super(x, y, res);
+    }
+
+    public Gate(int x, int y, float size)
+    {
+        super(x, y, size, res);
     }
 
     public void open()

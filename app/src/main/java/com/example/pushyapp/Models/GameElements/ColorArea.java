@@ -9,9 +9,14 @@ public class ColorArea extends GameElement implements Interactable, Accessible
     private static final int res2 = R.drawable.colorarea_red;
     private Color color;
 
-    public ColorArea()
+    public ColorArea(int x, int y)
     {
-        super(res);
+        super(x, y, res);
+    }
+
+    public ColorArea(int x, int y, float size)
+    {
+        super(x, y, size, res);
     }
 
     public boolean tryTake(ColorSphere sphere)

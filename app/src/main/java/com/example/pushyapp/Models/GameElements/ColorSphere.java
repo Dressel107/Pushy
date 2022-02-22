@@ -11,6 +11,11 @@ public class ColorSphere extends GameElement implements Interactable, Movable, A
 
     private Color color;
 
+    public ColorSphere(int x, int y)
+    {
+        super(x,y,res);
+    }
+
     public ColorSphere()
     {
         super(res);

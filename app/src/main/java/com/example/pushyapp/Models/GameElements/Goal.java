@@ -8,11 +8,11 @@ public class Goal extends GameElement implements Accessible
 
     public Goal(int x, int y)
     {
-        super(x,y,res);
+        super(x, y, res);
     }
 
-    public Goal()
+    public Goal(int x, int y, float size)
     {
-        super(res);
+        super(x, y, size, res);
     }
 }

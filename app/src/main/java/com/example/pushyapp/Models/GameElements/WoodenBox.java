@@ -7,14 +7,14 @@ public class WoodenBox extends GameElement implements Movable
 {
     private static final int res = R.drawable.woodenbox;
 
-    public WoodenBox()
-    {
-        super(res);
-    }
-
     public WoodenBox(int x, int y)
     {
         super(x, y, res);
+    }
+
+    public WoodenBox(int x, int y, float size)
+    {
+        super(x, y, size, res);
     }
 
     @Override

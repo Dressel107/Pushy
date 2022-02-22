@@ -1,25 +1,18 @@
 package com.example.pushyapp.Models.GameElements;
 
-
-
-
 import com.example.pushyapp.R;
 
 public class Wall extends GameElement
 {
     private static final int res = R.drawable.wall;
 
-    public Wall()
+    public Wall(int x, int y)
     {
-        super(res);
+        super(x, y, res);
     }
 
-    public Wall(int x, int y){
-        super(x,y,res);
-    }
-
-    public Wall(float x, float y, float size){
-       super(x, y, size, res);
-
+    public Wall(int x, int y, float size)
+    {
+        super(x, y, size, res);
     }
 }

@@ -34,24 +34,24 @@ public class GamefieldActivity extends AppCompatActivity {
 
         //tests
         ArrayList<GameElement> testElements = new ArrayList<GameElement>();
-        Presenter p = new Presenter(this, testElements, 15, 10);
-        p.drawEmptyGamefield();
+        //Presenter p = new Presenter(this, testElements, 15, 10);
+        //p.drawEmptyGamefield();
 
-        p.imageView.setOnTouchListener(new OnSwipeTouchListener(this) {
-            public void onSwipeTop() {
-                Toast.makeText(GamefieldActivity.this, "top", Toast.LENGTH_SHORT).show();
-            }
-            public void onSwipeRight() {
-                Toast.makeText(GamefieldActivity.this, "right", Toast.LENGTH_SHORT).show();
-            }
-            public void onSwipeLeft() {
-                Toast.makeText(GamefieldActivity.this, "left", Toast.LENGTH_SHORT).show();
-            }
-            public void onSwipeBottom() {
-                Toast.makeText(GamefieldActivity.this, "bottom", Toast.LENGTH_SHORT).show();
-            }
-
-        });
+//        p.imageView.setOnTouchListener(new OnSwipeTouchListener(this) {
+//            public void onSwipeTop() {
+//                Toast.makeText(GamefieldActivity.this, "top", Toast.LENGTH_SHORT).show();
+//            }
+//            public void onSwipeRight() {
+//                Toast.makeText(GamefieldActivity.this, "right", Toast.LENGTH_SHORT).show();
+//            }
+//            public void onSwipeLeft() {
+//                Toast.makeText(GamefieldActivity.this, "left", Toast.LENGTH_SHORT).show();
+//            }
+//            public void onSwipeBottom() {
+//                Toast.makeText(GamefieldActivity.this, "bottom", Toast.LENGTH_SHORT).show();
+//            }
+//
+//        });
 
 
     }

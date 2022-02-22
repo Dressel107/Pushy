@@ -29,12 +29,6 @@ public class Level
     @Ignore
     private ArrayList<GameElement> elements;
 
-    @Ignore
-    private int playerXPosition;
-
-    @Ignore
-    private int playerYPosition;
-
     public Level(int id, int durationInSeconds)
     {
         this.id = id;
@@ -50,8 +44,6 @@ public class Level
         }
 
         elements = LevelPool.levels.get(id);
-        playerXPosition = 5;
-        playerYPosition = 5;
     }
 
     public int getId() {
@@ -76,13 +68,5 @@ public class Level
 
     public ArrayList<GameElement> getElements() {
         return elements;
-    }
-
-    public int getPlayerXPosition() {
-        return playerXPosition;
-    }
-
-    public int getPlayerYPosition() {
-        return playerYPosition;
     }
 }

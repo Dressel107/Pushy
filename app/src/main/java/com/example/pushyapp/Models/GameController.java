@@ -18,7 +18,7 @@ import com.example.pushyapp.Presenter;
 
 import java.util.ArrayList;
 
-public class GameController
+public class GameController implements ScreenListener
 {
     public static final int HORIZONTAL_FIELD_COUNT = 10;
     public static final int VERTICAL_FIELD_COUNT = 15;
@@ -30,10 +30,20 @@ public class GameController
     public GameController(AppCompatActivity activity, Level level)
     {
         this.level = level;
-        player = new Player(level.getPlayerXPosition(), level.getPlayerYPosition());
         presenter = new Presenter(activity, level.getElements(), HORIZONTAL_FIELD_COUNT, VERTICAL_FIELD_COUNT);
+        presenter.setScreenListener(this);
+        extractPlayerFromLevel();
+    }
 
-        playerMoved(Direction.Up);
+    private void extractPlayerFromLevel()
+    {
+        for (GameElement element : level.getElements())
+        {
+            if (element instanceof Player)
+            {
+                this.player = (Player) element;
+            }
+        }
     }
 
     private boolean canWin()
@@ -99,14 +109,14 @@ public class GameController
 
         for (GameElement e : level.getElements())
         {
-            e.setSize(40f);
-            presenter.draw(e, e.getX(), e.getY());
+            presenter.draw(e);
         }
     }
 
-    private void playerMoved(Direction direction)
+    public void playerMoving(Direction direction)
     {
         GameElement element = getElementNextToPosition(player.getX(), player.getY(), direction, 1);
+        System.out.println(element);
 
         // Wenn Element das Ziel ist
         if (element instanceof Goal)
@@ -122,6 +132,7 @@ public class GameController
         // Wenn Feld frei
         if (element == null)
         {
+            System.out.println("Ist null");
             player.move(direction);
             forceDraw();
             return;

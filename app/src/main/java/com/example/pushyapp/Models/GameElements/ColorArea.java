@@ -11,12 +11,12 @@ public class ColorArea extends GameElement implements Interactable, Accessible
 
     public ColorArea(int x, int y)
     {
-        super(x,y,res);
+        super(x, y, res);
     }
 
-    public ColorArea()
+    public ColorArea(int x, int y, float size)
     {
-        super(res);
+        super(x, y, size, res);
     }
 
     public boolean tryTake(ColorSphere sphere)

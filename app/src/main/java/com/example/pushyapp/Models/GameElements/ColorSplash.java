@@ -12,12 +12,12 @@ public class ColorSplash extends GameElement implements Interactable, Accessible
 
     public ColorSplash(int x, int y)
     {
-        super(x,y,res);
+        super(x, y, res);
     }
 
-    public ColorSplash()
+    public ColorSplash(int x, int y, float size)
     {
-        super(res);
+        super(x, y, size, res);
     }
 
     public void dye(ColorSphere sphere)

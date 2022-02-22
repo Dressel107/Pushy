@@ -1,48 +1,41 @@
 package com.example.pushyapp.Models.GameElements;
 
-
-import java.util.ArrayList;
-
-public class GameElement
+public abstract class GameElement
 {
     protected int x;
     protected int y;
     protected float size;
     protected boolean isVisible;
     protected int res;
-    protected ArrayList<GameElement> interactableElements;
 
-    public GameElement()
+    public GameElement(int x, int y, int res)
     {
-
-    }
-
-    public GameElement(float x, float y){
         this.x = x;
         this.y = y;
+        this.res = res;
     }
 
-    public GameElement(float x, float y, float size, int res){
+    public GameElement(int x, int y, float size, int res)
+    {
         this.x = x;
         this.y = y;
         this.size = size;
         this.res = res;
-
     }
-
-    public GameElement(int x, int y, int res){
-        this.x = x;
-        this.y = y;
-        this.res = res;
-    }
-
-
 
     public GameElement(int res){
         this.res = res;
     }
 
+    public float getScreenX()
+    {
+        return x * size;
+    }
 
+    public float getScreenY()
+    {
+        return y * size;
+    }
 
     public int getX()
     {
@@ -66,6 +59,11 @@ public class GameElement
 
     public float getSize() {
         return size;
+    }
+
+    public void setSize(float size)
+    {
+        this.size = size;
     }
 
     public void setRes(int res) {

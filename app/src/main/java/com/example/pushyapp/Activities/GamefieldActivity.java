@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.pushyapp.Models.GameController;
@@ -24,6 +26,7 @@ public class GamefieldActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         // TODO: Id aus Intent holen
         Level level = new Level(0, 0);

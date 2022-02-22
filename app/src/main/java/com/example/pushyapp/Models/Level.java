@@ -5,6 +5,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.example.pushyapp.Models.GameElements.GameElement;
+import com.example.pushyapp.Models.GameElements.Player;
 import com.example.pushyapp.Models.GameElements.Wall;
 
 import java.util.ArrayList;
@@ -24,6 +25,8 @@ public class Level
     private boolean hasFinished;
 
     private ArrayList<GameElement> elements;
+    private int playerXPosition;
+    private int playerYPosition;
 
     public Level(int id, int durationInSeconds)
     {
@@ -40,6 +43,8 @@ public class Level
         }
 
         elements = LevelPool.levels.get(id);
+        playerXPosition = 5;
+        playerYPosition = 5;
     }
 
     public int getId() {
@@ -64,5 +69,13 @@ public class Level
 
     public ArrayList<GameElement> getElements() {
         return elements;
+    }
+
+    public int getPlayerXPosition() {
+        return playerXPosition;
+    }
+
+    public int getPlayerYPosition() {
+        return playerYPosition;
     }
 }

@@ -23,7 +23,7 @@ public class Player extends GameElement implements Movable, Accessible
         this.keysCount++;
     }
 
-    public boolean useKey()
+    public boolean tryUsingKey()
     {
         if (keysCount > 0)
         {
@@ -32,5 +32,29 @@ public class Player extends GameElement implements Movable, Accessible
         }
 
         return false;
+    }
+
+    @Override
+    public void move(Direction direction)
+    {
+        switch (direction)
+        {
+            case Left:
+                x--;
+                lookDirection = Direction.Left;
+                break;
+            case Right:
+                x++;
+                lookDirection = Direction.Right;
+                break;
+            case Up:
+                y--;
+                lookDirection = Direction.Up;
+                break;
+            case Down:
+                y++;
+                lookDirection = Direction.Down;
+                break;
+        }
     }
 }

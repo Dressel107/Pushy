@@ -1,15 +1,16 @@
 package com.example.pushyapp.Models.GameElements;
 
 
+import java.util.ArrayList;
 
 public class GameElement
 {
-    private float x;
-    private float y;
-    private float size;
-    private boolean isVisible;
-    private int res;
-
+    protected int x;
+    protected int y;
+    protected float size;
+    protected boolean isVisible;
+    protected int res;
+    protected ArrayList<GameElement> interactableElements;
 
     public GameElement()
     {
@@ -35,22 +36,22 @@ public class GameElement
 
 
 
-    public float getX()
+    public int getX()
     {
         return x;
     }
 
-    public void setX(float x)
+    public void setX(int x)
     {
         this.x = x;
     }
 
-    public float getY()
+    public int getY()
     {
         return y;
     }
 
-    public void setY(float y)
+    public void setY(int y)
     {
         this.y = y;
     }

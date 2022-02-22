@@ -13,6 +13,7 @@ public abstract class GameElement
         this.x = x;
         this.y = y;
         this.res = res;
+        this.isVisible = true;
     }
 
     public GameElement(int x, int y, float size, int res)
@@ -21,6 +22,7 @@ public abstract class GameElement
         this.y = y;
         this.size = size;
         this.res = res;
+        this.isVisible = true;
     }
 
     public GameElement(int res){

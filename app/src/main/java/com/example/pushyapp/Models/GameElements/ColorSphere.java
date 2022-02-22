@@ -11,24 +11,36 @@ public class ColorSphere extends GameElement implements Interactable, Movable, A
 
     private Color color;
 
-    public ColorSphere(int x, int y)
+    public ColorSphere(int x, int y, Color color)
     {
-        super(x,y,res);
+        super(x, y, res);
+        setColor(color);
     }
 
-    public ColorSphere()
+    public ColorSphere(int x, int y, float size, Color color)
     {
-        super(res);
+        super(x, y, size, res);
+        setColor(color);
     }
 
     public Color getColor()
     {
-        return color;
+        return this.color;
     }
 
     public void setColor(Color color)
     {
         this.color = color;
+
+        switch (color)
+        {
+            case Red:
+                setRes(res2);
+                break;
+            case Blue:
+                setRes(res);
+                break;
+        }
     }
 
     @Override
@@ -57,6 +69,7 @@ public class ColorSphere extends GameElement implements Interactable, Movable, A
         if (element instanceof ColorSplash)
         {
             ((ColorSplash) element).dye(this);
+            return true;
         }
         else if (element instanceof ColorArea)
         {

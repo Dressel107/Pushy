@@ -10,14 +10,36 @@ public class ColorSplash extends GameElement implements Interactable, Accessible
 
     private Color color;
 
-    public ColorSplash(int x, int y)
+    public ColorSplash(int x, int y, Color color)
     {
         super(x, y, res);
+        this.color = color;
+
+        switch (color)
+        {
+            case Red:
+                setRes(res2);
+                break;
+            case Blue:
+                setRes(res);
+                break;
+        }
     }
 
-    public ColorSplash(int x, int y, float size)
+    public ColorSplash(int x, int y, float size, Color color)
     {
         super(x, y, size, res);
+        this.color = color;
+
+        switch (color)
+        {
+            case Red:
+                setRes(res2);
+                break;
+            case Blue:
+                setRes(res);
+                break;
+        }
     }
 
     public void dye(ColorSphere sphere)
@@ -30,6 +52,7 @@ public class ColorSplash extends GameElement implements Interactable, Accessible
     {
         if (element instanceof ColorSphere)
         {
+            System.out.println("Wird gefärbt");
             dye((ColorSphere) element);
         }
 

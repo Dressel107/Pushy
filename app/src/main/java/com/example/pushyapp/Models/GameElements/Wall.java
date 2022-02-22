@@ -2,7 +2,7 @@ package com.example.pushyapp.Models.GameElements;
 
 import com.example.pushyapp.R;
 
-public class Wall extends GameElement
+public class Wall extends GameElement implements Solid
 {
     private static final int res = R.drawable.wall;
 

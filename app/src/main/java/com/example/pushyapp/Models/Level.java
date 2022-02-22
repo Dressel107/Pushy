@@ -46,6 +46,20 @@ public class Level
         elements = LevelPool.levels.get(id);
     }
 
+    public void addBorders(int horizontalFieldCount, int verticalFieldCount)
+    {
+        for (int i = 0; i < horizontalFieldCount; i++)
+        {
+            for (int j = 0; j < verticalFieldCount; j++)
+            {
+                if (i == 0 || i == horizontalFieldCount - 1 || j == 0 || j == verticalFieldCount - 1)
+                {
+                   elements.add(new Wall(i, j));
+                }
+            }
+        }
+    }
+
     public int getId() {
         return id;
     }

@@ -14,6 +14,11 @@ public class Key extends GameElement implements Interactable, Movable, Collectib
         super(res);
     }
 
+    public Key(int x, int y)
+    {
+        super(x,y,res);
+    }
+
     @Override
     public void collect(Player player)
     {

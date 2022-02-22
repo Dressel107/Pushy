@@ -32,6 +32,8 @@ public class GameController
         this.level = level;
         player = new Player(level.getPlayerXPosition(), level.getPlayerYPosition());
         presenter = new Presenter(activity, level.getElements(), HORIZONTAL_FIELD_COUNT, VERTICAL_FIELD_COUNT);
+
+        playerMoved(Direction.Up);
     }
 
     private boolean canWin()
@@ -90,6 +92,18 @@ public class GameController
         return null;
     }
 
+    private void forceDraw()
+    {
+        sortOutElements();
+        presenter.drawEmptyGamefield();
+
+        for (GameElement e : level.getElements())
+        {
+            e.setSize(40f);
+            presenter.draw(e, e.getX(), e.getY());
+        }
+    }
+
     private void playerMoved(Direction direction)
     {
         GameElement element = getElementNextToPosition(player.getX(), player.getY(), direction, 1);
@@ -109,6 +123,7 @@ public class GameController
         if (element == null)
         {
             player.move(direction);
+            forceDraw();
             return;
         }
 
@@ -118,6 +133,7 @@ public class GameController
             if (((Interactable) element).tryInteract(player))
             {
                 player.move(direction);
+                forceDraw();
                 return;
             }
         }
@@ -146,6 +162,7 @@ public class GameController
                             movable.move(direction);
                         }
 
+                        forceDraw();
                         return;
                     }
                 }
@@ -159,62 +176,63 @@ public class GameController
             }
         }
 
-        sortOutElements();
-        // presenter.draw(level.getElements());
 
 
 
 
 
-        if (element == null)
-        {
-            player.move(direction);
-        }
-        else if (element instanceof Goal)
-        {
-            if (canWin())
-            {
 
-            }
-        }
-        else if (element instanceof Gate)
-        {
-            if (player.tryUsingKey())
-            {
-                ((Gate) element).open();
-                player.move(direction);
-            }
-        }
-        else if (element instanceof Collectible)
-        {
-            ((Collectible) element).collect(player);
-            level.getElements().remove(element);
 
-            player.move(direction);
-        }
-        else if (element instanceof Movable)
-        {
-            GameElement element2 = getElementAtPosition(player.getX() - 2, player.getY());
 
-            if (element2 == null)
-            {
-                ((Movable) element).move(direction);
-                player.move(direction);
-            }
-            else if (element2 instanceof ColorSplash && element instanceof ColorSphere)
-            {
-                ((ColorSplash) element2).dye((ColorSphere) element);
-                ((ColorSphere) element).move(direction);
-                player.move(direction);
-            }
-            else if (element2 instanceof ColorArea && element instanceof ColorSphere)
-            {
-                if (((ColorArea) element2).tryTake((ColorSphere) element))
-                {
-                    player.move(direction);
-                }
-            }
-        }
+//        if (element == null)
+//        {
+//            player.move(direction);
+//        }
+//        else if (element instanceof Goal)
+//        {
+//            if (canWin())
+//            {
+//
+//            }
+//        }
+//        else if (element instanceof Gate)
+//        {
+//            if (player.tryUsingKey())
+//            {
+//                ((Gate) element).open();
+//                player.move(direction);
+//            }
+//        }
+//        else if (element instanceof Collectible)
+//        {
+//            ((Collectible) element).collect(player);
+//            level.getElements().remove(element);
+//
+//            player.move(direction);
+//        }
+//        else if (element instanceof Movable)
+//        {
+//            GameElement element2 = getElementAtPosition(player.getX() - 2, player.getY());
+//
+//            if (element2 == null)
+//            {
+//                ((Movable) element).move(direction);
+//                player.move(direction);
+//            }
+//            else if (element2 instanceof ColorSplash && element instanceof ColorSphere)
+//            {
+//                ((ColorSplash) element2).dye((ColorSphere) element);
+//                ((ColorSphere) element).move(direction);
+//                player.move(direction);
+//            }
+//            else if (element2 instanceof ColorArea && element instanceof ColorSphere)
+//            {
+//                if (((ColorArea) element2).tryTake((ColorSphere) element))
+//                {
+//                    player.move(direction);
+//                }
+//            }
+//        }
 
         // presenter.draw(level.getElements());
     }

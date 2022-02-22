@@ -10,7 +10,13 @@ public class Floor extends GameElement implements Accessible{
         super(res);
     }
 
+<<<<<<< Updated upstream
     public Floor(int x, int y){
         super(x,y,res);
+=======
+    public Floor(int x, int y, float size){
+        super(x, y, size, res);
+
+>>>>>>> Stashed changes
     }
 }

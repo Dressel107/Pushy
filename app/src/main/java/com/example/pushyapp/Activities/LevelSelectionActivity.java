@@ -25,13 +25,13 @@ public class LevelSelectionActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_selection);
 
-        Level level1 = new Level(1, 54);
-        Level level2 = new Level(2, 77);
-        Level level3 = new Level(3, 36);
+        Level level1 = new Level(0, 54);
+        //Level level2 = new Level(2, 77);
+        //Level level3 = new Level(3, 36);
 
         levels.add(level1);
-        levels.add(level2);
-        levels.add(level3);
+        //levels.add(level2);
+        //levels.add(level3);
 
 
         LevelListItemAdapter adapter = new LevelListItemAdapter(this, levels);

@@ -6,6 +6,11 @@ public class Goal extends GameElement implements Accessible
 {
     private static final int res = R.drawable.goal;
 
+    public Goal(int x, int y)
+    {
+        super(x,y,res);
+    }
+
     public Goal()
     {
         super(res);

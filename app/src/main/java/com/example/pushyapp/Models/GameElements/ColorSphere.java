@@ -4,8 +4,7 @@ import com.example.pushyapp.Enums.Color;
 import com.example.pushyapp.Enums.Direction;
 import com.example.pushyapp.R;
 
-public class ColorSphere extends GameElement implements Interactable, Movable, Accessible
-{
+public class ColorSphere extends GameElement implements Interactable, Movable {
     private static final int res = R.drawable.colorsphere;
     private static final int res2 = R.drawable.colorsphere_red;
 

@@ -3,8 +3,7 @@ package com.example.pushyapp.Models.GameElements;
 import com.example.pushyapp.Enums.Direction;
 import com.example.pushyapp.R;
 
-public class Player extends GameElement implements Movable, Accessible
-{
+public class Player extends GameElement implements Movable {
     private static final int res = R.drawable.player;
     private Direction lookDirection;
     private int keysCount;

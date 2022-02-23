@@ -6,14 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pushyapp.Activities.LevelFinishedActivity;
 import com.example.pushyapp.Enums.Direction;
-import com.example.pushyapp.Models.GameElements.Accessible;
 import com.example.pushyapp.Models.GameElements.ColorSphere;
 import com.example.pushyapp.Models.GameElements.GameElement;
 import com.example.pushyapp.Models.GameElements.Goal;
 import com.example.pushyapp.Models.GameElements.Interactable;
 import com.example.pushyapp.Models.GameElements.Movable;
 import com.example.pushyapp.Models.GameElements.Player;
-import com.example.pushyapp.Models.GameElements.Solid;
 import com.example.pushyapp.Presenter;
 
 import java.util.ArrayList;
@@ -117,6 +115,12 @@ public class GameController implements ScreenListener
         }
     }
 
+    private void showLevelResultsScreen()
+    {
+        Intent intent = new Intent(this.activity, LevelFinishedActivity.class);
+        activity.startActivity(intent);
+    }
+
     public void playerMoving(Direction direction)
     {
         GameElement element = getElementNextToPosition(player.getX(), player.getY(), direction, 1);
@@ -125,42 +129,20 @@ public class GameController implements ScreenListener
         if (element == null)
         {
             player.move(direction);
-            forceDraw();
-            return;
         }
-        // Wenn Element nicht interagierbar und nicht bewegbar ist, verlasssen
-//        else if (element instanceof Solid)
-//        {
-//            return;
-//        }
-
-        // Wenn das Element mit anderen Elementen interagieren kann
-        if (element instanceof Interactable)
+        // Wenn das Element mit dem Spieler interagieren kann
+        else if (element instanceof Interactable && ((Interactable) element).tryInteract(player))
         {
-            if (((Interactable) element).tryInteract(player))
+            player.move(direction);
+
+            // Wenn Element das Ziel ist und das Spiel gewonnen werden kann
+            if (element instanceof Goal && canWin())
             {
-                player.move(direction);
-                forceDraw();
-
-                // Wenn Element das Ziel ist
-                if (element instanceof Goal)
-                {
-                    System.out.println("Ziel");
-
-                    if (canWin())
-                    {
-                        System.out.println("Nice");
-                        Intent intent = new Intent(this.activity, LevelFinishedActivity.class);
-                        activity.startActivity(intent);
-                    }
-                }
-
-                return;
+                showLevelResultsScreen();
             }
         }
-
         // Wenn das Element bewegbar ist
-        if (element instanceof Movable)
+        else if (element instanceof Movable)
         {
             int fieldCount = 2;
             ArrayList<Movable> movables = new ArrayList<>();
@@ -174,130 +156,29 @@ public class GameController implements ScreenListener
             {
                 e2 = getElementNextToPosition(player.getX(), player.getY(), direction, fieldCount);
 
-                if (e2 == null)
+                if (e2 == null || (e2 instanceof Interactable && ((Interactable) e2).tryInteract(e1)))
                 {
                     for (Movable movable : movables)
                     {
                         movable.move(direction);
                     }
 
-                    forceDraw();
-                    return;
+                    break;
                 }
-                else if (element instanceof Solid)
-                {
-                    return;
-                }
-                else if (e2 instanceof Interactable)
-                {
-                    if (((Interactable) e2).tryInteract(e1))
-                    {
-                        for (Movable movable : movables)
-                        {
-                            movable.move(direction);
-                        }
-
-                        forceDraw();
-                        return;
-                    }
-                }
-
-                if (e2 instanceof Movable)
+                else if (e2 instanceof Movable)
                 {
                     movables.add((Movable) e2);
                     e1 = e2;
                     fieldCount++;
                 }
+                else
+                {
+                    break;
+                }
             }
         }
 
-
-
-
-
-
-
-
-
-//        if (element == null)
-//        {
-//            player.move(direction);
-//        }
-//        else if (element instanceof Goal)
-//        {
-//            if (canWin())
-//            {
-//
-//            }
-//        }
-//        else if (element instanceof Gate)
-//        {
-//            if (player.tryUsingKey())
-//            {
-//                ((Gate) element).open();
-//                player.move(direction);
-//            }
-//        }
-//        else if (element instanceof Collectible)
-//        {
-//            ((Collectible) element).collect(player);
-//            level.getElements().remove(element);
-//
-//            player.move(direction);
-//        }
-//        else if (element instanceof Movable)
-//        {
-//            GameElement element2 = getElementAtPosition(player.getX() - 2, player.getY());
-//
-//            if (element2 == null)
-//            {
-//                ((Movable) element).move(direction);
-//                player.move(direction);
-//            }
-//            else if (element2 instanceof ColorSplash && element instanceof ColorSphere)
-//            {
-//                ((ColorSplash) element2).dye((ColorSphere) element);
-//                ((ColorSphere) element).move(direction);
-//                player.move(direction);
-//            }
-//            else if (element2 instanceof ColorArea && element instanceof ColorSphere)
-//            {
-//                if (((ColorArea) element2).tryTake((ColorSphere) element))
-//                {
-//                    player.move(direction);
-//                }
-//            }
-//        }
-
-        // presenter.draw(level.getElements());
-    }
-
-    private ArrayList<GameElement> getElementsAtPosition(int x, int y)
-    {
-        ArrayList<GameElement> elements = new ArrayList<>();
-
-        for (GameElement element : level.getElements())
-        {
-            if (element instanceof Accessible && element.getX() == x && element.getY() == y)
-            {
-                elements.add(element);
-            }
-        }
-
-        return elements;
-    }
-
-    private GameElement getElementAtPosition(int x, int y)
-    {
-        for (GameElement element : level.getElements())
-        {
-            if (element instanceof Accessible && element.getX() == x && element.getY() == y)
-            {
-                return element;
-            }
-        }
-
-        return null;
+        forceDraw();
     }
 
     public void restart(){

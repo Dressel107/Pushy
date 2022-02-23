@@ -22,8 +22,8 @@ public class LevelFinishedActivity extends AppCompatActivity  {
         getSupportActionBar().hide();
 
         Bundle extras = getIntent().getExtras();
-        int triesCount = extras.getInt("triesCount");
-        long durationInSeconds = extras.getLong("duration");
+        //int triesCount = extras.getInt("triesCount");
+        //long durationInSeconds = extras.getLong("duration");
 
         btnSelectLevel = findViewById(R.id.btn_select_level);
         btnNextLevel = findViewById(R.id.btn_next_level);

@@ -21,7 +21,8 @@
             android:exported="false" />
         <activity
             android:name=".Activities.LevelSelectionActivity"
-            android:exported="false" />
+            android:exported="false"/>
+
         <activity
             android:name=".Activities.Splashscreen"
             android:exported="true">

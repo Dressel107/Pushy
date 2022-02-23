@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Pushy App</string>
+    <string name="app_name">Pushy Application</string>
     <string name="name">Pushy</string>
     <string name="select_level">Select level</string>
     <string name="next_level">Next level</string>

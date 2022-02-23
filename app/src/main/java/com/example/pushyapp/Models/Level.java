@@ -28,6 +28,9 @@ public class Level
 
     @Ignore
     private ArrayList<GameElement> elements;
+    @Ignore
+    private ArrayList<GameElement> elementsStart;
+
 
     public Level(int id, int durationInSeconds)
     {
@@ -44,6 +47,7 @@ public class Level
         }
 
         elements = LevelPool.levels.get(id);
+        this.elementsStart = LevelPool.levels.get(id);
     }
 
     public void addBorders(int horizontalFieldCount, int verticalFieldCount)
@@ -58,6 +62,10 @@ public class Level
                 }
             }
         }
+    }
+
+    public  void levelReset(){
+        this.elements = elementsStart;
     }
 
     public int getId() {

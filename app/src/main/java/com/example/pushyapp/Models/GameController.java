@@ -300,4 +300,9 @@ public class GameController implements ScreenListener
         return null;
     }
 
+    public void restart(){
+        level.levelReset();
+        forceDraw();
+    }
+
 }

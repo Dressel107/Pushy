@@ -39,7 +39,7 @@ public class LevelPool
         // Level 2
         ArrayList<GameElement> level2Elements = new ArrayList<>();
 
-        level2Elements.add(new Goal(4,1));
+
 
         level2Elements.add(new Wall(2,11));
         level2Elements.add(new Wall(3,11));
@@ -77,6 +77,7 @@ public class LevelPool
         level2Elements.add(new ColorArea(1,9, Color.Blue));
 
         level2Elements.add(new Player(3,13));
+        level2Elements.add(new Goal(4,1));
         levels.add(new Level(1, level2Elements));
     }
 

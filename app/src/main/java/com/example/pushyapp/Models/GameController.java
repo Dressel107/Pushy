@@ -155,6 +155,7 @@ public class GameController implements ScreenListener
         Intent intent = new Intent(this.activity, LevelFinishedActivity.class);
         intent.putExtra("triesCount", triesCount);
         intent.putExtra("durationInSeconds", durationInSeconds);
+        intent.putExtra("nextLevel", this.level.getId() + 1);
         activity.startActivity(intent);
     }
 

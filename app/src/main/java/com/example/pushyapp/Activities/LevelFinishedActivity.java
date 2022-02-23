@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.pushyapp.R;
 import com.example.pushyapp.Services.AppDatabaseHandler;
@@ -13,6 +14,9 @@ import com.example.pushyapp.Services.AppDatabaseHandler;
 public class LevelFinishedActivity extends AppCompatActivity  {
     Button btnSelectLevel;
     Button btnNextLevel;
+
+    TextView time;
+    TextView NumberOfAttemps;
 
 
     @Override
@@ -22,11 +26,20 @@ public class LevelFinishedActivity extends AppCompatActivity  {
         getSupportActionBar().hide();
 
         Bundle extras = getIntent().getExtras();
-        //int triesCount = extras.getInt("triesCount");
-        //long durationInSeconds = extras.getLong("duration");
+        int triesCount = extras.getInt("triesCount");
+        long durationInSeconds = extras.getLong("duration");
+        int nextLevelID = extras.getInt("nextLevel");
 
-        btnSelectLevel = findViewById(R.id.btn_select_level);
-        btnNextLevel = findViewById(R.id.btn_next_level);
+        this.btnSelectLevel = findViewById(R.id.btn_select_level);
+        this.btnNextLevel = findViewById(R.id.btn_next_level);
+
+        this.time = findViewById(R.id.tv_time);
+        this.NumberOfAttemps = findViewById(R.id.tv_number_attemps);
+
+        this.time.setText( "Time:" + " " + durationInSeconds);
+        this.NumberOfAttemps.setText( "Number of Attemps:" + " " + triesCount);
+
+
 
         btnSelectLevel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,7 +52,8 @@ public class LevelFinishedActivity extends AppCompatActivity  {
         btnNextLevel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LevelFinishedActivity.this, MainActivity.class);
+                Intent intent = new Intent(LevelFinishedActivity.this, GamefieldActivity.class);
+                intent.putExtra("id", nextLevelID);
                 startActivity(intent);
 
 

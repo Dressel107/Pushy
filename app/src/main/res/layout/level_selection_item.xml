@@ -39,32 +39,40 @@
                 android:textStyle="bold"></TextView>
         </LinearLayout>
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/has_level_finished_icon"
             android:layout_column="1"
-            android:layout_gravity="fill_vertical|right">
+            android:layout_gravity="fill_vertical|right"
+            android:src="@drawable/check"
+            android:layout_width="60dp"
+            android:layout_height="60dp"></ImageView>
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="6dp"
-                android:src="@drawable/star"></ImageView>
+<!--        <LinearLayout-->
+<!--            android:layout_column="1"-->
+<!--            android:layout_gravity="fill_vertical|right">-->
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/star"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="8px"
-                android:layout_marginTop="-6dp"></ImageView>
+<!--            <ImageView-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:layout_marginTop="6dp"-->
+<!--                android:src="@drawable/star"></ImageView>-->
 
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/star"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="6dp"
-                android:layout_marginLeft="8px"></ImageView>
-        </LinearLayout>
+<!--            <ImageView-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:src="@drawable/star"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:layout_marginLeft="8px"-->
+<!--                android:layout_marginTop="-6dp"></ImageView>-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="30dp"-->
+<!--                android:layout_height="30dp"-->
+<!--                android:src="@drawable/star"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:layout_marginTop="6dp"-->
+<!--                android:layout_marginLeft="8px"></ImageView>-->
+<!--        </LinearLayout>-->
     </GridLayout>
 </GridLayout>

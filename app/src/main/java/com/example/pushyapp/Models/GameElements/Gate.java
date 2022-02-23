@@ -23,6 +23,13 @@ public class Gate extends GameElement implements Interactable {
         setRes(res2);
     }
 
+    public void reset()
+    {
+        super.reset();
+        isOpen = false;
+        setRes(res);
+    }
+
     public boolean getIsOpen()
     {
         return isOpen;

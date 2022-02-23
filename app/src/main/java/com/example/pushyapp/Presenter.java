@@ -97,6 +97,11 @@ public class Presenter extends AppCompatActivity {
     }
 
     public void draw(GameElement gameElement){
+
+        if (!gameElement.isVisible()){
+            return;
+        }
+
         Bitmap bm = BitmapFactory.decodeResource(this.activity.getResources(), gameElement.getRes());
         Rect srcRect =  new Rect(0, 0, bm.getWidth(), bm.getHeight());
         Rect dstRect = new Rect((int)gameElement.getScreenX(), (int)gameElement.getScreenY(), (int) (gameElement.getScreenX()+gameElement.getSize()), (int) (gameElement.getScreenY()+gameElement.getSize()));

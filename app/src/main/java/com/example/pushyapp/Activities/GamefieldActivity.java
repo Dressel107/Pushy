@@ -17,6 +17,7 @@ import com.example.pushyapp.Models.GameController;
 import com.example.pushyapp.Models.GameElements.GameElement;
 
 import com.example.pushyapp.Models.Level;
+import com.example.pushyapp.Models.LevelPool;
 import com.example.pushyapp.Presenter;
 import com.example.pushyapp.R;
 import com.example.pushyapp.Services.OnSwipeTouchListener;
@@ -24,27 +25,21 @@ import com.example.pushyapp.Services.OnSwipeTouchListener;
 import java.util.ArrayList;
 
 
-public class GamefieldActivity extends AppCompatActivity {
-
+public class GamefieldActivity extends AppCompatActivity
+{
     private GameController controller;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
 
+        // Übergebene Level-ID ermitteln
+        Bundle extras = getIntent().getExtras();
+        Level level = LevelPool.getLevel(extras.getInt("id"));
 
-        // TODO: Id aus Intent holen
-        Level level = new Level(0, 0);
+        // Spiel mit Level starten
         this.controller = new GameController(this, level);
-
-        //tests
-        //ArrayList<GameElement> testElements = new ArrayList<GameElement>();
-        //Presenter p = new Presenter(this, testElements, 15, 10);
-        //p.drawEmptyGamefield();
-
-
-
-
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -59,12 +54,11 @@ public class GamefieldActivity extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.reset:
-                // To do: reset level funktion
                 this.controller.restart();
-
                 return true;
 
             case R.id.close:
+                this.controller.cancel();
                 Intent intent2 = new Intent(this, LevelSelectionActivity.class);
                 startActivity(intent2);
                 finish();

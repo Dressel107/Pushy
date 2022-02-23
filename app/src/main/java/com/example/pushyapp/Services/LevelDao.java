@@ -7,17 +7,19 @@ import androidx.room.Query;
 
 import com.example.pushyapp.Models.Level;
 
+import java.util.ArrayList;
+
 @Dao
 public interface LevelDao
 {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void buildTable(Level[] levels);
+    void buildTable(ArrayList<Level> levels);
 
     @Query("SELECT duration FROM Level WHERE id = :id;")
     int getCurrentLevelDuration(int id);
 
     @Query("UPDATE Level SET duration = :duration WHERE id = :id;")
-    void updateProgress(int id, int duration);
+    void updateProgress(int id, long duration);
 
     @Query("DELETE FROM Level;")
     void clear();

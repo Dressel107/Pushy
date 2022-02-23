@@ -15,25 +15,37 @@ import java.util.ArrayList;
 
 public class LevelPool
 {
-    public static ArrayList<ArrayList<GameElement>> levels;
+    private static ArrayList<Level> levels;
 
     static
     {
-        levels = new ArrayList<ArrayList<GameElement>>();
+        levels = new ArrayList<Level>();
 
         // Level 1
-        ArrayList<GameElement> level1 = new ArrayList<>();
-        level1.add(new WoodenBox(4, 5));
-        level1.add(new WoodenBox(5, 5));
-        level1.add(new WoodenBox(6, 5));
-        level1.add(new Key(2,3));
-        level1.add(new Goal(7,3));
-        level1.add(new Player(7,7));
-        level1.add(new Gate(1,2));
-        level1.add(new ColorSphere(6,10, Color.Blue));
-        level1.add(new ColorSplash(7,8, Color.Red));
-        level1.add(new ColorArea(7,11, Color.Red));
+        ArrayList<GameElement> level1Elements = new ArrayList<>();
+        level1Elements.add(new WoodenBox(4, 5));
+        level1Elements.add(new WoodenBox(5, 5));
+        level1Elements.add(new WoodenBox(6, 5));
+        level1Elements.add(new Key(2,3));
+        level1Elements.add(new Goal(7,3));
+        level1Elements.add(new Player(7,7));
+        level1Elements.add(new Gate(1,2));
+        level1Elements.add(new ColorSphere(6,10, Color.Blue));
+        level1Elements.add(new ColorSplash(7,8, Color.Red));
+        level1Elements.add(new ColorArea(7,11, Color.Red));
+        levels.add(new Level(0, level1Elements));
 
-        levels.add(level1);
+        // Level 2
+        ArrayList<GameElement> level2Elements = new ArrayList<>();
+    }
+
+    public static Level getLevel(int index)
+    {
+        return levels.get(index);
+    }
+
+    public static ArrayList<Level> getAll()
+    {
+        return levels;
     }
 }

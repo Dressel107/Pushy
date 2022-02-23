@@ -2,6 +2,8 @@ package com.example.pushyapp.Services;
 
 import androidx.room.Room;
 
+import com.example.pushyapp.Models.LevelPool;
+
 public final class AppDatabaseHandler
 {
     private static AppDatabase database;
@@ -15,7 +17,7 @@ public final class AppDatabaseHandler
         {
             public void run()
             {
-                //database.levelDao().buildTable((levels));
+                database.levelDao().buildTable((LevelPool.getAll()));
             }});
         thread.start();
     }
@@ -25,7 +27,7 @@ public final class AppDatabaseHandler
         return database.levelDao().getCurrentLevelDuration(id);
     }
 
-    public static void updateLevelProgress(int id, int duration)
+    public static void updateLevelProgress(int id, long duration)
     {
         database.levelDao().updateProgress(id, duration);
     }

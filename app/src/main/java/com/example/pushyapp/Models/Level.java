@@ -8,7 +8,9 @@ import androidx.room.PrimaryKey;
 import com.example.pushyapp.Models.GameElements.GameElement;
 import com.example.pushyapp.Models.GameElements.Player;
 import com.example.pushyapp.Models.GameElements.Wall;
+import com.example.pushyapp.Services.AppDatabaseHandler;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 @Entity
@@ -20,34 +22,30 @@ public class Level
 
     // Gibt an, wie viele Sekunden der Spieler für das Lösen des Levels benötigt hat.
     @ColumnInfo(name = "duration")
-    private int durationInSeconds;
+    private long durationInSeconds;
 
-    // Gibt an, ob der Spieler das Level geschafft hat.
-    @Ignore
-    private boolean hasFinished;
-
+    // Gibt die dynamischen Elemente des Levels an oder legt sie fest.
     @Ignore
     private ArrayList<GameElement> elements;
-    @Ignore
-    private ArrayList<GameElement> elementsStart;
 
-
-    public Level(int id, int durationInSeconds)
+    public Level(int id)
     {
         this.id = id;
-        this.durationInSeconds = durationInSeconds;
+        this.elements = new ArrayList<>();
 
-        if (durationInSeconds > 0)
+        Thread thread = new Thread(new Runnable()
         {
-            hasFinished = true;
-        }
-        else
-        {
-            hasFinished = false;
-        }
+            public void run()
+            {
+                durationInSeconds = AppDatabaseHandler.getCurrentLevelDuration(id);
+            }});
+        thread.start();
+    }
 
-        elements = LevelPool.levels.get(id);
-        this.elementsStart = LevelPool.levels.get(id);
+    public Level(int id, ArrayList<GameElement> elements)
+    {
+        this(id);
+        this.elements = elements;
     }
 
     public void addBorders(int horizontalFieldCount, int verticalFieldCount)
@@ -64,31 +62,41 @@ public class Level
         }
     }
 
-    public  void levelReset(){
-        this.elements = elementsStart;
-    }
-
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public int getDurationInSeconds() {
-        return durationInSeconds;
-    }
-
-    public void setDurationInSeconds(int durationInSeconds) {
+    public void setDurationInSeconds(long durationInSeconds)
+    {
         this.durationInSeconds = durationInSeconds;
     }
 
-    public boolean isHasFinished() {
-        return hasFinished;
+    public long getDurationInSeconds()
+    {
+        return durationInSeconds;
     }
 
-    public void setHasFinished(boolean hasFinished) {
-        this.hasFinished = hasFinished;
-    }
-
-    public ArrayList<GameElement> getElements() {
+    public ArrayList<GameElement> getElements()
+    {
         return elements;
+    }
+
+    public void updateProgress(long duration)
+    {
+        if (this.durationInSeconds > 0 && duration > this.durationInSeconds)
+        {
+            return;
+        }
+
+        Thread thread = new Thread(new Runnable()
+        {
+            public void run()
+            {
+                AppDatabaseHandler.updateLevelProgress(id, duration);
+            }});
+        thread.start();
+
+        this.durationInSeconds = duration;
     }
 }

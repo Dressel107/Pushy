@@ -9,17 +9,26 @@ public class ColorSphere extends GameElement implements Interactable, Movable {
     private static final int res2 = R.drawable.colorsphere_red;
 
     private Color color;
+    private Color startColor;
 
     public ColorSphere(int x, int y, Color color)
     {
         super(x, y, res);
+        this.startColor = color;
         setColor(color);
     }
 
     public ColorSphere(int x, int y, float size, Color color)
     {
         super(x, y, size, res);
+        this.startColor = color;
         setColor(color);
+    }
+
+    public void reset()
+    {
+        super.reset();
+        setColor(startColor);
     }
 
     public Color getColor()

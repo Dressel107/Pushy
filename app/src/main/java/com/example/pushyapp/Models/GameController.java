@@ -22,9 +22,11 @@ public class GameController implements ScreenListener
     public static final int VERTICAL_FIELD_COUNT = 15;
 
     AppCompatActivity activity;
-    private Level level;
     private Presenter presenter;
+    private Level level;
     private Player player;
+    private int triesCount;
+    private long startTime;
 
     public GameController(AppCompatActivity activity, Level level)
     {
@@ -32,11 +34,32 @@ public class GameController implements ScreenListener
         this.level = level;
         presenter = new Presenter(activity, level.getElements(), HORIZONTAL_FIELD_COUNT, VERTICAL_FIELD_COUNT);
         presenter.setScreenListener(this);
-        extractPlayerFromLevel();
 
-        level.addBorders(HORIZONTAL_FIELD_COUNT, VERTICAL_FIELD_COUNT);
+        initializeLevel();
     }
 
+    /**
+     * Initialisiert Variablen, um einen fehlerfreien Start des Levels zu ermöglichen.
+     * @author Simon Schnitker
+     */
+    private void initializeLevel()
+    {
+        extractPlayerFromLevel();
+        level.addBorders(HORIZONTAL_FIELD_COUNT, VERTICAL_FIELD_COUNT);
+
+        for(GameElement element : level.getElements())
+        {
+            element.reset();
+        }
+
+        triesCount = 1;
+        startTime = System.currentTimeMillis();
+    }
+
+    /**
+     * Ermittelt das Player-Objekt aus den Levelelementen
+     * @author Simon Schnitker.
+     */
     private void extractPlayerFromLevel()
     {
         for (GameElement element : level.getElements())
@@ -48,11 +71,17 @@ public class GameController implements ScreenListener
         }
     }
 
+    /**
+     * Prüft, ob das Level abgeschlossen werden kann.
+     * Dies ist nur der Fall, wenn keine Farbkugeln mehr vorhanden sind.
+     * @return Gibt zurück, ob das Level abgeschlossen werden kann.
+     * @author Simon Schnitker
+     */
     private boolean canWin()
     {
         for (GameElement element : level.getElements())
         {
-            if (element instanceof ColorSphere)
+            if (element instanceof ColorSphere && element.isVisible())
             {
                 return false;
             }
@@ -61,41 +90,38 @@ public class GameController implements ScreenListener
         return true;
     }
 
-    private void sortOutElements()
+    /**
+     * Ermittelt das Element, das sich in der Nähe des übergebenen Elements befindet.
+     * @param source Das Element, von dem das entsprechende Nachbarelement gesucht werden soll.
+     * @param direction Die Richtung, in der gesucht werden soll.
+     * @param fieldCount Die Anzahl Felder, die entfernt gesucht werden soll.
+     * @author Simon Schnitker
+     * @return Gibt das ermittelte GameElement zurück.
+     */
+    private GameElement getNearbyElement(GameElement source, Direction direction, int fieldCount)
     {
-        for (int i = 0; i < level.getElements().size(); i++)
-        {
-            if (level.getElements().get(i).isVisible() == false)
-            {
-                level.getElements().remove(level.getElements().get(i));
-            }
-        }
-    }
-
-    private GameElement getElementNextToPosition(int x, int y, Direction direction, int fieldCount)
-    {
-        int targetX = x;
-        int targetY = y;
+        int targetX = source.getX();
+        int targetY = source.getY();
 
         switch (direction)
         {
             case Left:
-                targetX = x - fieldCount;
+                targetX = source.getX() - fieldCount;
                 break;
             case Right:
-                targetX = x + fieldCount;
+                targetX = source.getX() + fieldCount;
                 break;
             case Up:
-                targetY = y - fieldCount;
+                targetY = source.getY() - fieldCount;
                 break;
             case Down:
-                targetY = y + fieldCount;
+                targetY = source.getY() + fieldCount;
                 break;
         }
 
         for (GameElement element : level.getElements())
         {
-            if (element.getX() == targetX && element.getY() == targetY)
+            if (element.isVisible() && element.getX() == targetX && element.getY() == targetY)
             {
                 return element;
             }
@@ -104,9 +130,9 @@ public class GameController implements ScreenListener
         return null;
     }
 
+    // TODO: In Presenter verschieben
     private void forceDraw()
     {
-        sortOutElements();
         presenter.drawEmptyGamefield();
 
         for (GameElement e : level.getElements())
@@ -115,15 +141,31 @@ public class GameController implements ScreenListener
         }
     }
 
-    private void showLevelResultsScreen()
+    /**
+     *
+     * @author Simon Schnitker
+     */
+    private void won()
     {
+        long durationInSeconds = (System.currentTimeMillis() - startTime) / 1000;
+        level.updateProgress(durationInSeconds);
+
+        System.out.println("Dauer wird aktualisiert: " + durationInSeconds);
+
         Intent intent = new Intent(this.activity, LevelFinishedActivity.class);
+        intent.putExtra("triesCount", triesCount);
+        intent.putExtra("durationInSeconds", durationInSeconds);
         activity.startActivity(intent);
     }
 
+    /**
+     * Versucht den Spieler in die gewünschte Richtung zu bewegen. Wird vom Presenter aufgerufen.
+     * @param direction Gibt die Richtung an, in die sich der Spieler bewegen möchte.
+     * @author Simon Schnitker
+     */
     public void playerMoving(Direction direction)
     {
-        GameElement element = getElementNextToPosition(player.getX(), player.getY(), direction, 1);
+        GameElement element = getNearbyElement(player, direction, 1);
 
         // Wenn Feld frei
         if (element == null)
@@ -138,7 +180,7 @@ public class GameController implements ScreenListener
             // Wenn Element das Ziel ist und das Spiel gewonnen werden kann
             if (element instanceof Goal && canWin())
             {
-                showLevelResultsScreen();
+                won();
             }
         }
         // Wenn das Element bewegbar ist
@@ -154,7 +196,7 @@ public class GameController implements ScreenListener
 
             while (true)
             {
-                e2 = getElementNextToPosition(player.getX(), player.getY(), direction, fieldCount);
+                e2 = getNearbyElement(player, direction, fieldCount);
 
                 if (e2 == null || (e2 instanceof Interactable && ((Interactable) e2).tryInteract(e1)))
                 {
@@ -183,9 +225,18 @@ public class GameController implements ScreenListener
 
     public void restart(){
         for(GameElement element : level.getElements()){
-            element.resetPosition();
+            element.reset();
         }
+        triesCount++;
+        startTime = System.currentTimeMillis();
         forceDraw();
     }
 
+    public void cancel() {
+        for(GameElement element : level.getElements()){
+            element.reset();
+        }
+        triesCount = 1;
+        startTime = 0;
+    }
 }

@@ -34,6 +34,12 @@ public class Player extends GameElement implements Movable {
         return false;
     }
 
+    public void reset()
+    {
+        super.reset();
+        keysCount = 0;
+    }
+
     @Override
     public void move(Direction direction)
     {

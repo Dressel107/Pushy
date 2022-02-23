@@ -1,15 +1,45 @@
 package com.example.pushyapp.Models.GameElements;
 
+/**
+ * Definiert den Aufbau eines Spielelements.
+ * @author Simon Schnitker, Dirk Dresselhaus
+ */
 public abstract class GameElement
 {
-    protected int x;
-    protected int y;
+    /**
+     * Gibt den Startindex des Elements in X-Richtung auf dem Spielfeld an.
+     */
     private int startX;
-    private int startY;
-    protected float size;
-    protected boolean isVisible;
-    protected int res;
 
+    /**
+     * Gibt den Startindex des Elements in Y-Richtung auf dem Spielfeld an.
+     */
+    private int startY;
+
+    /**
+     * Gibt den aktuellen Index des Elements in X-Richtung auf dem Spielfeld an.
+     */
+    protected int x;
+
+    /**
+     * Gibt den aktuellen Index des Elements in Y-Richtung auf dem Spielfeld an.
+     */
+    protected int y;
+
+    /**
+     * Gibt die Größe in X- und Y-Richtung des Elements an.
+     */
+    protected float size;
+
+    /**
+     * Gibt an, ob das Element sichtbar ist.
+     */
+    protected boolean isVisible;
+
+    /**
+     * Gibt die ID der Ressource aus dem drawable-Ordner an.
+     */
+    protected int res;
 
     public GameElement(int x, int y, int res)
     {
@@ -32,9 +62,10 @@ public abstract class GameElement
         this.isVisible = true;
     }
 
-    public void resetPosition(){
+    public void reset(){
         this.x = startX;
         this.y = startY;
+        this.isVisible = true;
     }
 
     public GameElement(int res){
@@ -71,7 +102,8 @@ public abstract class GameElement
         this.y = y;
     }
 
-    public float getSize() {
+    public float getSize()
+    {
         return size;
     }
 
@@ -80,7 +112,8 @@ public abstract class GameElement
         this.size = size;
     }
 
-    public void setRes(int res) {
+    public void setRes(int res)
+    {
         this.res = res;
     }
 
@@ -93,7 +126,9 @@ public abstract class GameElement
     {
         isVisible = visible;
     }
-    public int getRes() {
+
+    public int getRes()
+    {
         return res;
     }
 }

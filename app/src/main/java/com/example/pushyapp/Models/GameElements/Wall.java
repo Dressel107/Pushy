@@ -15,4 +15,5 @@ public class Wall extends GameElement
     {
         super(x, y, size, res);
     }
+    
 }

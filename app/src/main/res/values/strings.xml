@@ -6,5 +6,10 @@
     <string name="level_completed">Level abgeschlossen!</string>
     <string name="number_of_attemps">Anzahl Versuche:</string>
     <string name="time">Zeit:</string>
+    <string name="reset">Neustarten</string>
+    <string name="close">Beenden</string>
+    <string name="languange">Sprache</string>
+    <string name="german">Deutsch</string>
+    <string name="english">Englisch</string>
 
 </resources>

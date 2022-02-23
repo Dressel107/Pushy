@@ -21,6 +21,7 @@ public class Gate extends GameElement implements Interactable, Accessible
     public void open()
     {
         this.isOpen = true;
+        setRes(res2);
     }
 
     public boolean getIsOpen()
@@ -31,7 +32,11 @@ public class Gate extends GameElement implements Interactable, Accessible
     @Override
     public boolean tryInteract(GameElement element)
     {
-        if (element instanceof Key)
+        if (isOpen)
+        {
+            return true;
+        }
+        else if (element instanceof Key)
         {
             if (isOpen == false)
             {
@@ -41,9 +46,13 @@ public class Gate extends GameElement implements Interactable, Accessible
 
             return true;
         }
-        else if (element instanceof Player)
+        else if (element instanceof Player && isOpen == false)
         {
-            return ((Player) element).tryUsingKey();
+            if (((Player) element).tryUsingKey())
+            {
+                open();
+                return true;
+            }
         }
 
         return false;

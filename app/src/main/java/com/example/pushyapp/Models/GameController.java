@@ -1,19 +1,19 @@
 package com.example.pushyapp.Models;
 
+import android.content.Intent;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.pushyapp.Activities.LevelFinishedActivity;
 import com.example.pushyapp.Enums.Direction;
 import com.example.pushyapp.Models.GameElements.Accessible;
-import com.example.pushyapp.Models.GameElements.Collectible;
-import com.example.pushyapp.Models.GameElements.ColorArea;
 import com.example.pushyapp.Models.GameElements.ColorSphere;
-import com.example.pushyapp.Models.GameElements.ColorSplash;
 import com.example.pushyapp.Models.GameElements.GameElement;
-import com.example.pushyapp.Models.GameElements.Gate;
 import com.example.pushyapp.Models.GameElements.Goal;
 import com.example.pushyapp.Models.GameElements.Interactable;
 import com.example.pushyapp.Models.GameElements.Movable;
 import com.example.pushyapp.Models.GameElements.Player;
+import com.example.pushyapp.Models.GameElements.Solid;
 import com.example.pushyapp.Presenter;
 
 import java.util.ArrayList;
@@ -23,16 +23,20 @@ public class GameController implements ScreenListener
     public static final int HORIZONTAL_FIELD_COUNT = 10;
     public static final int VERTICAL_FIELD_COUNT = 15;
 
+    AppCompatActivity activity;
     private Level level;
     private Presenter presenter;
     private Player player;
 
     public GameController(AppCompatActivity activity, Level level)
     {
+        this.activity = activity;
         this.level = level;
         presenter = new Presenter(activity, level.getElements(), HORIZONTAL_FIELD_COUNT, VERTICAL_FIELD_COUNT);
         presenter.setScreenListener(this);
         extractPlayerFromLevel();
+
+        level.addBorders(HORIZONTAL_FIELD_COUNT, VERTICAL_FIELD_COUNT);
     }
 
     private void extractPlayerFromLevel()
@@ -63,7 +67,7 @@ public class GameController implements ScreenListener
     {
         for (int i = 0; i < level.getElements().size(); i++)
         {
-            if (level.getElements().get(i).isVisible())
+            if (level.getElements().get(i).isVisible() == false)
             {
                 level.getElements().remove(level.getElements().get(i));
             }
@@ -116,27 +120,19 @@ public class GameController implements ScreenListener
     public void playerMoving(Direction direction)
     {
         GameElement element = getElementNextToPosition(player.getX(), player.getY(), direction, 1);
-        System.out.println(element);
-
-        // Wenn Element das Ziel ist
-        if (element instanceof Goal)
-        {
-            if (canWin())
-            {
-                // TODO: Intent
-            }
-
-            return;
-        }
 
         // Wenn Feld frei
         if (element == null)
         {
-            System.out.println("Ist null");
             player.move(direction);
             forceDraw();
             return;
         }
+        // Wenn Element nicht interagierbar und nicht bewegbar ist, verlasssen
+//        else if (element instanceof Solid)
+//        {
+//            return;
+//        }
 
         // Wenn das Element mit anderen Elementen interagieren kann
         if (element instanceof Interactable)
@@ -145,6 +141,20 @@ public class GameController implements ScreenListener
             {
                 player.move(direction);
                 forceDraw();
+
+                // Wenn Element das Ziel ist
+                if (element instanceof Goal)
+                {
+                    System.out.println("Ziel");
+
+                    if (canWin())
+                    {
+                        System.out.println("Nice");
+                        Intent intent = new Intent(this.activity, LevelFinishedActivity.class);
+                        activity.startActivity(intent);
+                    }
+                }
+
                 return;
             }
         }
@@ -164,7 +174,21 @@ public class GameController implements ScreenListener
             {
                 e2 = getElementNextToPosition(player.getX(), player.getY(), direction, fieldCount);
 
-                if (e2 instanceof Interactable)
+                if (e2 == null)
+                {
+                    for (Movable movable : movables)
+                    {
+                        movable.move(direction);
+                    }
+
+                    forceDraw();
+                    return;
+                }
+                else if (element instanceof Solid)
+                {
+                    return;
+                }
+                else if (e2 instanceof Interactable)
                 {
                     if (((Interactable) e2).tryInteract(e1))
                     {
@@ -274,6 +298,11 @@ public class GameController implements ScreenListener
         }
 
         return null;
+    }
+
+    public void restart(){
+        level.levelReset();
+        forceDraw();
     }
 
 }

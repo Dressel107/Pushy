@@ -4,11 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.sartainstudios.contacts.AboutContacts">
 
-    <item
-        android:id="@+id/language"
-        android:icon="@drawable/globe"
-        android:title="@string/languange"
-        app:showAsAction="always" />
+
 
     <item
         android:id="@+id/german"

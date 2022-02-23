@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".Activities.LevelSelectionActivity"
     android:orientation="vertical"
-    android:background="#3E5729">
+    android:background="@color/green1">
 
     <ListView
         android:id="@+id/level_selection_listView"

@@ -67,9 +67,12 @@ public class LevelSelectionActivity extends AppCompatActivity
         //handle presses on the action bar items
         switch (item.getItemId()) {
 
-            case R.id.language:
-                // To do: reset level funktion
-                System.out.println("sprach");
+            case R.id.german:
+
+                System.out.println("german");
+            case R.id.english:
+
+                System.out.println("english");
 
                 return true;
 

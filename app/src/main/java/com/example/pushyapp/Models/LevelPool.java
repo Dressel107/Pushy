@@ -33,6 +33,7 @@ public class LevelPool
         level1.add(new ColorSphere(6,10, Color.Blue));
         level1.add(new ColorSplash(7,8, Color.Red));
         level1.add(new ColorArea(7,11, Color.Red));
+        level1.add(new Key(4,4));
 
         levels.add(level1);
     }

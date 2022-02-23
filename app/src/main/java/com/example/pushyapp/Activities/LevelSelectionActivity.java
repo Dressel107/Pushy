@@ -73,6 +73,7 @@ public class LevelSelectionActivity extends AppCompatActivity
                 config.locale = locale;
                 getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
                 //Toast.makeText(this, "Locale in English !", Toast.LENGTH_LONG).show();
+                return true;
 
 
             case R.id.english:
@@ -82,8 +83,7 @@ public class LevelSelectionActivity extends AppCompatActivity
                 config2.locale = locale2;
                 getBaseContext().getResources().updateConfiguration(config2, getBaseContext().getResources().getDisplayMetrics());
                 //Toast.makeText(this, "Locale in Portugal !", Toast.LENGTH_LONG).show();
-
-                break;
+                return true;
 
         }
         return super.onOptionsItemSelected(item);

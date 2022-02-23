@@ -63,6 +63,7 @@ public class GamefieldActivity extends AppCompatActivity
                 startActivity(intent2);
                 finish();
                 return true;
+
         }
         return super.onOptionsItemSelected(item);
     }

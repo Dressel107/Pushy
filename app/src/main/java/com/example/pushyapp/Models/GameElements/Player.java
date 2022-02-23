@@ -4,7 +4,11 @@ import com.example.pushyapp.Enums.Direction;
 import com.example.pushyapp.R;
 
 public class Player extends GameElement implements Movable {
-    private static final int res = R.drawable.player;
+    private static int res = R.drawable.player_up;
+    private static final int resUp = R.drawable.player_up;
+    private static final int resRight = R.drawable.player_right;
+    private static final int resDown = R.drawable.player_down;
+    private static final int resLeft = R.drawable.player_left;
     private Direction lookDirection;
     private int keysCount;
 
@@ -48,19 +52,25 @@ public class Player extends GameElement implements Movable {
             case Left:
                 x--;
                 lookDirection = Direction.Left;
+                setRes(this.resLeft);
                 break;
             case Right:
                 x++;
                 lookDirection = Direction.Right;
+                setRes(this.resRight);
                 break;
             case Up:
                 y--;
                 lookDirection = Direction.Up;
+                setRes(this.resUp);
                 break;
             case Down:
                 y++;
                 lookDirection = Direction.Down;
+                setRes(this.resDown);
                 break;
         }
     }
+
+
 }

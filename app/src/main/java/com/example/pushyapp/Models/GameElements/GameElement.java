@@ -4,14 +4,19 @@ public abstract class GameElement
 {
     protected int x;
     protected int y;
+    private int startX;
+    private int startY;
     protected float size;
     protected boolean isVisible;
     protected int res;
+
 
     public GameElement(int x, int y, int res)
     {
         this.x = x;
         this.y = y;
+        this.startX = x;
+        this.startY = y;
         this.res = res;
         this.isVisible = true;
     }
@@ -20,9 +25,16 @@ public abstract class GameElement
     {
         this.x = x;
         this.y = y;
+        this.startX = x;
+        this.startY = y;
         this.size = size;
         this.res = res;
         this.isVisible = true;
+    }
+
+    public void resetPosition(){
+        this.x = startX;
+        this.y = startY;
     }
 
     public GameElement(int res){

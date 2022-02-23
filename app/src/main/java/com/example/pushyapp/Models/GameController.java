@@ -301,7 +301,9 @@ public class GameController implements ScreenListener
     }
 
     public void restart(){
-        level.levelReset();
+        for(GameElement element : level.getElements()){
+            element.resetPosition();
+        }
         forceDraw();
     }
 

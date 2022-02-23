@@ -3,8 +3,7 @@ package com.example.pushyapp.Models.GameElements;
 import com.example.pushyapp.Enums.Color;
 import com.example.pushyapp.R;
 
-public class ColorSplash extends GameElement implements Interactable, Accessible
-{
+public class ColorSplash extends GameElement implements Interactable {
     private static final int res = R.drawable.colorsplash;
     private static final int res2 = R.drawable.colorsplash_red;
 
@@ -52,8 +51,8 @@ public class ColorSplash extends GameElement implements Interactable, Accessible
     {
         if (element instanceof ColorSphere)
         {
-            System.out.println("Wird gefärbt");
             dye((ColorSphere) element);
+            this.isVisible = false;
         }
 
         return true;

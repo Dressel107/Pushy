@@ -30,8 +30,8 @@ public class LevelPool
         level1.add(new Goal(7,3));
         level1.add(new Player(7,7));
         level1.add(new Gate(1,2));
+        level1.add(new ColorSphere(6,10, Color.Blue));
         level1.add(new ColorSplash(7,8, Color.Red));
-        //level1.add(new ColorSphere(6,10, Color.Blue));
         level1.add(new ColorArea(7,11, Color.Red));
 
         levels.add(level1);

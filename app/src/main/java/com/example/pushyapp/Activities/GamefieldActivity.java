@@ -1,28 +1,16 @@
 package com.example.pushyapp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NavUtils;
-
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Toast;
-
 import com.example.pushyapp.Models.GameController;
-
-import com.example.pushyapp.Models.GameElements.GameElement;
 
 import com.example.pushyapp.Models.Level;
 import com.example.pushyapp.Models.LevelPool;
-import com.example.pushyapp.Presenter;
 import com.example.pushyapp.R;
-import com.example.pushyapp.Services.OnSwipeTouchListener;
 
-import java.util.ArrayList;
 
 
 public class GamefieldActivity extends AppCompatActivity

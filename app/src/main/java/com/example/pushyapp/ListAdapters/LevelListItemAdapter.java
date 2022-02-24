@@ -48,14 +48,14 @@ public class LevelListItemAdapter extends ArrayAdapter<Level>
         }
         else if (duration < 60)
         {
-            durationText = duration + " Sekunden";
+            durationText = duration + " " + context.getResources().getString(R.string.secounds);
         }
         else
         {
             long minutes = duration / 60;
             long seconds = duration - (minutes * 60);
 
-            durationText = minutes + ":" + seconds + " Minuten";
+            durationText = minutes + ":" + seconds + " " + context.getResources().getString(R.string.minuts);
         }
 
         neededTimeText.setText(durationText);

@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.pushyapp.Models.Level;
+import com.example.pushyapp.Models.LevelPool;
 import com.example.pushyapp.R;
 import com.example.pushyapp.Services.AppDatabaseHandler;
 
@@ -52,11 +54,14 @@ public class LevelFinishedActivity extends AppCompatActivity  {
         btnNextLevel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LevelFinishedActivity.this, GamefieldActivity.class);
-                intent.putExtra("id", nextLevelID);
-                startActivity(intent);
-
-
+                if(nextLevelID >= LevelPool.getAll().size()){
+                    Intent intent = new Intent(LevelFinishedActivity.this, LevelSelectionActivity.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(LevelFinishedActivity.this, GamefieldActivity.class);
+                    intent.putExtra("id", nextLevelID);
+                    startActivity(intent);
+                }
             }
         });
     }

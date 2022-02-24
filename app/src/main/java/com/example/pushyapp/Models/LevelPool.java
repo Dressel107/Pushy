@@ -63,21 +63,22 @@ public class LevelPool
         level2Elements.add(new Wall(3,2));
         level2Elements.add(new Wall(2,2));
 
-        level2Elements.add(new Key(8,10));
-        level2Elements.add(new Gate(1,2));
-
         level2Elements.add(new WoodenBox(3,10));
         level2Elements.add(new WoodenBox(2, 13));
         level2Elements.add(new WoodenBox(8,3));
         level2Elements.add(new WoodenBox(6,3));
 
+        level2Elements.add(new Key(8,10));
+        level2Elements.add(new Gate(1,2));
+
         level2Elements.add(new ColorSphere(7,3, Color.Red));
-        level2Elements.add(new ColorSplash(4,5, Color.Blue));
         level2Elements.add(new ColorSphere(7,12, Color.Blue));
+        level2Elements.add(new ColorSplash(4,5, Color.Blue));
         level2Elements.add(new ColorArea(1,9, Color.Blue));
 
-        level2Elements.add(new Player(3,13));
+
         level2Elements.add(new Goal(4,1));
+        level2Elements.add(new Player(3,13));
         levels.add(new Level(1, level2Elements));
     }
 

@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import com.example.pushyapp.Models.GameController;
+import com.example.pushyapp.GameController;
 
 import com.example.pushyapp.Models.Level;
 import com.example.pushyapp.Models.LevelPool;

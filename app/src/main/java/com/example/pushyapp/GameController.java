@@ -1,4 +1,4 @@
-package com.example.pushyapp.Models;
+package com.example.pushyapp;
 
 import android.content.Intent;
 
@@ -12,6 +12,8 @@ import com.example.pushyapp.Models.GameElements.Goal;
 import com.example.pushyapp.Models.GameElements.Interactable;
 import com.example.pushyapp.Models.GameElements.Movable;
 import com.example.pushyapp.Models.GameElements.Player;
+import com.example.pushyapp.Models.Level;
+import com.example.pushyapp.Models.ScreenListener;
 import com.example.pushyapp.Presenter;
 
 import java.util.ArrayList;

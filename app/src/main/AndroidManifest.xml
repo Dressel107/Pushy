@@ -28,13 +28,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".Activities.Splashscreen"
-            android:exported="false"
-            android:noHistory="true">
-
-
-        </activity>
     </application>
 
 </manifest>

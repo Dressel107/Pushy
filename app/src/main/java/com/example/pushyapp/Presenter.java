@@ -9,11 +9,7 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.widget.ImageView;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.pushyapp.Activities.GamefieldActivity;
 import com.example.pushyapp.Enums.Direction;
 import com.example.pushyapp.Models.GameElements.Floor;
 import com.example.pushyapp.Models.GameElements.GameElement;
@@ -97,7 +93,6 @@ public class Presenter extends AppCompatActivity {
     }
 
     public void draw(GameElement gameElement){
-
         if (!gameElement.isVisible()){
             return;
         }

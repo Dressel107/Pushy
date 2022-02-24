@@ -31,8 +31,8 @@ public class Splashscreen extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(Splashscreen.this, LevelSelectionActivity.class);
                 startActivity(intent);
-                finish();
+                //finish();
             }
-        },2000);
+        },0);
     }
 }

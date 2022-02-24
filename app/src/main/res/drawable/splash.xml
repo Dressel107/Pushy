@@ -1,0 +1,11 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:drawable="@color/green1">
+    </item>
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/pushy_splashscreen"
+            android:tileMode="disabled" >
+        </bitmap>
+    </item>
+</layer-list>

@@ -34,7 +34,7 @@ public class LevelPool
         level1Elements.add(new ColorSphere(6,10, Color.Blue));
         level1Elements.add(new ColorSplash(7,8, Color.Red));
         level1Elements.add(new ColorArea(7,11, Color.Red));
-        levels.add(new Level(0, level1Elements));
+        levels.add(new Level(0, level1Elements, 10, 15));
 
         // Level 2
         ArrayList<GameElement> level2Elements = new ArrayList<>();
@@ -79,7 +79,7 @@ public class LevelPool
 
         level2Elements.add(new Goal(4,1));
         level2Elements.add(new Player(3,13));
-        levels.add(new Level(1, level2Elements));
+        levels.add(new Level(1, level2Elements, 10, 15));
     }
 
     public static Level getLevel(int index)

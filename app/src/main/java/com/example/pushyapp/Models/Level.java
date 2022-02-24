@@ -28,11 +28,23 @@ public class Level
     @Ignore
     private ArrayList<GameElement> elements;
 
-    public Level(int id)
+    @Ignore
+    private int horizontalFieldCount;
+
+    @Ignore
+    private int verticalFieldCount;
+
+    public Level (int id){
+        this.id = id;
+    }
+
+    public Level(int id, int horizontalFieldCount, int verticalFieldCount)
     {
         this.id = id;
         this.elements = new ArrayList<>();
-
+        this.horizontalFieldCount = horizontalFieldCount;
+        this.verticalFieldCount = verticalFieldCount;
+        this.addBorders();
         Thread thread = new Thread(new Runnable()
         {
             public void run()
@@ -42,13 +54,14 @@ public class Level
         thread.start();
     }
 
-    public Level(int id, ArrayList<GameElement> elements)
+    public Level(int id, ArrayList<GameElement> elements, int horizontalFieldCount, int verticalFieldCount)
     {
-        this(id);
+        this(id, horizontalFieldCount, verticalFieldCount);
         this.elements = elements;
+
     }
 
-    public void addBorders(int horizontalFieldCount, int verticalFieldCount)
+    private void addBorders()
     {
         for (int i = 0; i < horizontalFieldCount; i++)
         {
@@ -99,4 +112,22 @@ public class Level
 
         this.durationInSeconds = duration;
     }
+
+    public void setHorizontalFieldCount(int horizontalFieldCount) {
+        this.horizontalFieldCount = horizontalFieldCount;
+    }
+
+    public void setVerticalFieldCount(int verticalFieldCount) {
+        this.verticalFieldCount = verticalFieldCount;
+    }
+
+    public int getHorizontalFieldCount() {
+        return horizontalFieldCount;
+    }
+
+    public int getVerticalFieldCount() {
+        return verticalFieldCount;
+    }
+
+
 }

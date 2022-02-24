@@ -15,23 +15,25 @@
             android:name=".Activities.GamefieldActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.MainActivity"
-            android:exported="true" />
-        <activity
             android:name=".Activities.LevelFinishedActivity"
             android:exported="false" />
         <activity
             android:name=".Activities.LevelSelectionActivity"
-            android:exported="false"/>
+            android:exported="true"
+            android:theme="@style/splashScreenTheme">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".Activities.Splashscreen"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false"
+            android:noHistory="true">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
     </application>
 

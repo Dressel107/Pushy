@@ -18,8 +18,7 @@ import java.util.ArrayList;
 
 public class GameController implements ScreenListener
 {
-    public static final int HORIZONTAL_FIELD_COUNT = 10;
-    public static final int VERTICAL_FIELD_COUNT = 15;
+
 
     AppCompatActivity activity;
     private Presenter presenter;
@@ -32,7 +31,7 @@ public class GameController implements ScreenListener
     {
         this.activity = activity;
         this.level = level;
-        presenter = new Presenter(activity, level.getElements(), HORIZONTAL_FIELD_COUNT, VERTICAL_FIELD_COUNT);
+        presenter = new Presenter(activity, level.getElements(), level.getHorizontalFieldCount(), level.getVerticalFieldCount());
         presenter.setScreenListener(this);
 
         initializeLevel();
@@ -45,12 +44,13 @@ public class GameController implements ScreenListener
     private void initializeLevel()
     {
         extractPlayerFromLevel();
-        level.addBorders(HORIZONTAL_FIELD_COUNT, VERTICAL_FIELD_COUNT);
+
 
         for(GameElement element : level.getElements())
         {
             element.reset();
         }
+        forceDraw();
 
         triesCount = 1;
         startTime = System.currentTimeMillis();
@@ -154,7 +154,7 @@ public class GameController implements ScreenListener
 
         Intent intent = new Intent(this.activity, LevelFinishedActivity.class);
         intent.putExtra("triesCount", triesCount);
-        intent.putExtra("durationInSeconds", durationInSeconds);
+        intent.putExtra("duration", durationInSeconds);
         intent.putExtra("nextLevel", this.level.getId() + 1);
         activity.startActivity(intent);
     }

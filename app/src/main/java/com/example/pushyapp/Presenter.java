@@ -20,9 +20,10 @@ import java.util.ArrayList;
 public class Presenter extends AppCompatActivity {
     private AppCompatActivity activity;
     ScreenListener listener;
-    public ImageView imageView;
+
     private Bitmap bitmap;
     private Canvas canvas;
+    public ImageView imageView;
     private Paint paint;
 
     private int screenWidth;

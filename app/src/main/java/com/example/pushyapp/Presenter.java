@@ -4,9 +4,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,9 +20,10 @@ import java.util.ArrayList;
 public class Presenter extends AppCompatActivity {
     private AppCompatActivity activity;
     ScreenListener listener;
-    public ImageView imageView;
+
     private Bitmap bitmap;
     private Canvas canvas;
+    public ImageView imageView;
     private Paint paint;
 
     private int screenWidth;
@@ -34,6 +33,14 @@ public class Presenter extends AppCompatActivity {
     private int verticalFieldsCount;
     private float elementSize;
 
+    /**Initialisiert für eine Activity eine Bitmap, Canvas, Imageview und eine Farbe
+     * zeichnet das Spielfeld und die übergebenen Spielelemnte.
+     * @param activity übergibt die Activity, auf die der Presenter zeichen und Gesten erkennen soll
+     * @param elements übergibt die darzustellenden Elemente
+     * @param horizontalFieldsCount Anzahl der Zeilen des Spielfeldes
+     * @param verticalFieldsCount Anzahl der Spalten des Spielfeldes
+     * @author Dirk Dresselhaus
+     */
     public Presenter(AppCompatActivity activity, ArrayList<GameElement> elements, int horizontalFieldsCount, int verticalFieldsCount)
     {
         this.gameElements = elements;
@@ -69,11 +76,11 @@ public class Presenter extends AppCompatActivity {
         }
     }
 
-    public void setScreenListener(ScreenListener listener)
-    {
-        this.listener = listener;
-    }
-
+    /**
+     * Setzt den SwipeListener für die jeweiligen Methoden
+     * onSwipeTop(), onSwipeRight(), onSwipeTop(), onSwipeBottom().
+     * @author Dirk Dresselhaus
+     */
     private void setSwipeListener()
     {
             imageView.setOnTouchListener(new OnSwipeTouchListener(activity) {
@@ -92,6 +99,12 @@ public class Presenter extends AppCompatActivity {
         });
     }
 
+    /**
+     * Zeichnet ein GameElement auf dem Screen.
+     * Das komplette Bitmap des GameElements wird auf die Size des GameElements skaliert und dargestellt.
+     * @param gameElement das zu zeichnende GameElement
+     * @author Dirk Dresselhaus
+     */
     public void draw(GameElement gameElement){
         if (!gameElement.isVisible()){
             return;
@@ -104,6 +117,10 @@ public class Presenter extends AppCompatActivity {
         imageView.invalidate();
     }
 
+    /**
+     * Zeichen eine Spielfeld ohne GameElements anhand der Anzahl der Zeilen und Spalten
+     * @author Dirk Dresselhaus
+     */
     public void drawEmptyGamefield(){
             for(int i = 0; i < horizontalFieldsCount; i++){
                 for(int j = 0; j < verticalFieldsCount; j++){
@@ -116,7 +133,9 @@ public class Presenter extends AppCompatActivity {
             }
     }
 
-    public void clear()   {
-        this.canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
+    public void setScreenListener(ScreenListener listener)
+    {
+        this.listener = listener;
     }
+
 }

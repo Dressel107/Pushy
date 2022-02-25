@@ -57,8 +57,11 @@ public class Level
     public Level(int id, ArrayList<GameElement> elements, int horizontalFieldCount, int verticalFieldCount)
     {
         this(id, horizontalFieldCount, verticalFieldCount);
-        this.elements = elements;
 
+        for (GameElement element: elements)
+        {
+            this.elements.add(element);
+        }
     }
 
     private void addBorders()

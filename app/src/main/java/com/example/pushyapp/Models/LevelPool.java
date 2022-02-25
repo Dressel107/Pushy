@@ -9,6 +9,8 @@ import com.example.pushyapp.Models.GameElements.Gate;
 import com.example.pushyapp.Models.GameElements.Goal;
 import com.example.pushyapp.Models.GameElements.Key;
 import com.example.pushyapp.Models.GameElements.Player;
+import com.example.pushyapp.Models.GameElements.Switch;
+import com.example.pushyapp.Models.GameElements.SwitchGate;
 import com.example.pushyapp.Models.GameElements.Wall;
 import com.example.pushyapp.Models.GameElements.WoodenBox;
 
@@ -34,6 +36,10 @@ public class LevelPool
         level1Elements.add(new ColorSphere(6,10, Color.Blue));
         level1Elements.add(new ColorSplash(7,8, Color.Red));
         level1Elements.add(new ColorArea(7,11, Color.Red));
+
+        SwitchGate gate = new SwitchGate(3,1);
+        level1Elements.add(gate);
+        level1Elements.add(new Switch(5,1, gate));
         levels.add(new Level(0, level1Elements, 10, 15));
 
         // Level 2

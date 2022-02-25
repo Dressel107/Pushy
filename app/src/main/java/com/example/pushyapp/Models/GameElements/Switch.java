@@ -4,7 +4,9 @@ import com.example.pushyapp.R;
 
 public class Switch extends GameElement implements Interactable
 {
-    private static final int res = R.drawable.goal;
+    private static final int res = R.drawable.lever;
+    private static final int res2 = R.drawable.lever_on;
+    private boolean isOn;
 
     private SwitchGate gate;
 
@@ -12,11 +14,13 @@ public class Switch extends GameElement implements Interactable
     {
         super(x, y, res);
         this.gate = gate;
+        this.isOn = false;
     }
 
     @Override
     public boolean tryInteract(GameElement element)
     {
+        this.switchLever();
         if (gate.isOpen())
         {
             gate.close();
@@ -27,5 +31,15 @@ public class Switch extends GameElement implements Interactable
         }
 
         return true;
+    }
+
+    private void switchLever(){
+        if(isOn){
+            isOn = false;
+            this.setRes(res);
+        }else{
+            isOn = true;
+            this.setRes(res2);
+        }
     }
 }

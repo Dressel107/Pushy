@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         resConfigs ("en", "de")
-        applicationId "com.example.pushyapp"
+        applicationId 'com.example.pushyapp'
         minSdk 21
         targetSdk 31
         versionCode 1

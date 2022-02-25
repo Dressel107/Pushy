@@ -21,7 +21,6 @@ import com.example.pushyapp.Services.AppDatabaseHandler;
 public class LevelSelectionActivity extends AppCompatActivity
 {
     private static final String APP_DATABASE_NAME = "app_database";
-    private String language = "de";
     private ListView list;
 
 

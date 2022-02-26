@@ -22,7 +22,7 @@ public final class AppDatabaseHandler
         thread.start();
     }
 
-    public static int getCurrentLevelDuration(int id)
+    public static long getCurrentLevelDuration(int id)
     {
         return database.levelDao().getCurrentLevelDuration(id);
     }

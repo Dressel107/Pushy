@@ -48,7 +48,7 @@ public class LevelListItemAdapter extends ArrayAdapter<Level>
         }
         else if (duration < 60)
         {
-            durationText = duration + " " + context.getResources().getString(R.string.secounds);
+            durationText = duration + " " + context.getResources().getString(R.string.seconds);
         }
         else
         {

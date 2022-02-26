@@ -12,10 +12,6 @@ public class WoodenBox extends GameElement implements Movable
         super(x, y, res);
     }
 
-    public WoodenBox(int x, int y, float size)
-    {
-        super(x, y, size, res);
-    }
 
     @Override
     public void move(Direction direction)

@@ -17,11 +17,6 @@ public class Player extends GameElement implements Movable {
         super(x, y, res);
     }
 
-    public Player(int x, int y, float size)
-    {
-        super(x, y, size, res);
-    }
-
     public void collectKey()
     {
         this.keysCount++;
@@ -72,5 +67,7 @@ public class Player extends GameElement implements Movable {
         }
     }
 
-
+    public int getKeysCount() {
+        return keysCount;
+    }
 }

@@ -24,22 +24,6 @@ public class ColorArea extends GameElement implements Interactable {
         }
     }
 
-    public ColorArea(int x, int y, float size, Color color)
-    {
-        super(x, y, size, res);
-        this.color = color;
-
-        switch (color)
-        {
-            case Red:
-                setRes(res2);
-                break;
-            case Blue:
-                setRes(res);
-                break;
-        }
-    }
-
     public boolean tryTake(ColorSphere sphere)
     {
         if (this.color == sphere.getColor())

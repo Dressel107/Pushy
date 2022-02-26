@@ -12,7 +12,7 @@
     <string name="languange">Sprache</string>
     <string name="german">Deutsch</string>
     <string name="english">Englisch</string>
-    <string name="secounds">Sekunden</string>
+    <string name="seconds">Sekunden</string>
     <string name="minuts">Minuten</string>
 
 </resources>

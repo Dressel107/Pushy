@@ -14,11 +14,6 @@ public class Key extends GameElement implements Interactable, Movable
         super(x, y, res);
     }
 
-    public Key(int x, int y, float size)
-    {
-        super(x, y, size, res);
-    }
-
     @Override
     public boolean tryInteract(GameElement element)
     {

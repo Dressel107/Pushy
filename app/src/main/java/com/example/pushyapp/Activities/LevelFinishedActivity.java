@@ -38,7 +38,7 @@ public class LevelFinishedActivity extends AppCompatActivity  {
         this.time = findViewById(R.id.tv_time);
         this.NumberOfAttemps = findViewById(R.id.tv_number_attemps);
 
-        this.time.setText( getResources().getString(R.string.time) + " " + durationInSeconds + " " + getResources().getString(R.string.secounds));
+        this.time.setText( getResources().getString(R.string.time) + " " + durationInSeconds + " " + getResources().getString(R.string.seconds));
         this.NumberOfAttemps.setText( getResources().getString(R.string.number_of_attemps) + " " + triesCount);
 
 

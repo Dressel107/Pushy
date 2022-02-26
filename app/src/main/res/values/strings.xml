@@ -11,8 +11,6 @@
     <string name="languange">Languange</string>
     <string name="german">German</string>
     <string name="english">English</string>
-    <string name="secounds">Secounds</string>
+    <string name="seconds">Seconds</string>
     <string name="minuts">Minuts</string>
-
-
 </resources>

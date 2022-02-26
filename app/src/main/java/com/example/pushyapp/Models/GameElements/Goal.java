@@ -10,11 +10,6 @@ public class Goal extends GameElement implements Interactable {
         super(x, y, res);
     }
 
-    public Goal(int x, int y, float size)
-    {
-        super(x, y, size, res);
-    }
-
     @Override
     public boolean tryInteract(GameElement element)
     {

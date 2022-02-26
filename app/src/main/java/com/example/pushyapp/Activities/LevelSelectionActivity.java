@@ -29,6 +29,7 @@ public class LevelSelectionActivity extends AppCompatActivity
     {
         AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, APP_DATABASE_NAME).build();
         AppDatabaseHandler.setAppDatabase(db);
+
         setTheme(R.style.Theme_PushyApp);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_selection);

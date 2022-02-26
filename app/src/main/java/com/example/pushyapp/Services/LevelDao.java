@@ -16,7 +16,7 @@ public interface LevelDao
     void buildTable(ArrayList<Level> levels);
 
     @Query("SELECT duration FROM Level WHERE id = :id;")
-    int getCurrentLevelDuration(int id);
+    long getCurrentLevelDuration(int id);
 
     @Query("UPDATE Level SET duration = :duration WHERE id = :id;")
     void updateProgress(int id, long duration);

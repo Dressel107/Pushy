@@ -5,6 +5,10 @@ import com.example.pushyapp.R;
 
 import java.util.ArrayList;
 
+/**
+ * Definiert den Aufbau eines Schlüssels.
+ * @author Simon Schnitker
+ */
 public class Key extends GameElement implements Interactable, Movable
 {
     private static final int res = R.drawable.key;
@@ -14,6 +18,13 @@ public class Key extends GameElement implements Interactable, Movable
         super(x, y, res);
     }
 
+    /**
+     * Versucht, das zugrundeliegende Objekt mit dem übergebenen Objekt interagieren zu lasssen.
+     * Eine Interaktion ist mit den Elementen "Player" und "Gate" möglich.
+     * @param element Das Element, mit dem interagiert werden soll.
+     * @return Gibt true zurück, falls die Interaktion möglich war, andernfalls false.
+     * @author Simon Schnitker
+     */
     @Override
     public boolean tryInteract(GameElement element)
     {
@@ -37,6 +48,11 @@ public class Key extends GameElement implements Interactable, Movable
         return false;
     }
 
+    /**
+     * Bewegt das Element in die angegebene Richtung.
+     * @param direction Die Richtung, in der sich das Element bewegen soll.
+     * @author Simon Schnitker
+     */
     @Override
     public void move(Direction direction)
     {

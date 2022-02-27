@@ -13,6 +13,6 @@
     <string name="german">Deutsch</string>
     <string name="english">Englisch</string>
     <string name="seconds">Sekunden</string>
-    <string name="minuts">Minuten</string>
-
+    <string name="minutes">Minuten</string>
+    <string name="level_selection">Levelauswahl</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.pushyapp.Services;
+package com.example.pushyapp.Services.LocalDatabase;
 
 import androidx.room.Database;
 import androidx.room.RoomDatabase;

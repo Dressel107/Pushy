@@ -8,10 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.pushyapp.Models.Level;
-import com.example.pushyapp.Models.LevelPool;
+import com.example.pushyapp.Helpers.TimeHelper;
+import com.example.pushyapp.LevelPool;
 import com.example.pushyapp.R;
-import com.example.pushyapp.Services.AppDatabaseHandler;
 
 public class LevelFinishedActivity extends AppCompatActivity  {
     Button btnSelectLevel;
@@ -38,10 +37,8 @@ public class LevelFinishedActivity extends AppCompatActivity  {
         this.time = findViewById(R.id.tv_time);
         this.NumberOfAttemps = findViewById(R.id.tv_number_attemps);
 
-        this.time.setText( getResources().getString(R.string.time) + " " + durationInSeconds + " " + getResources().getString(R.string.seconds));
+        this.time.setText( getResources().getString(R.string.time) + " " + TimeHelper.getDurationText(this, durationInSeconds));
         this.NumberOfAttemps.setText( getResources().getString(R.string.number_of_attemps) + " " + triesCount);
-
-
 
         btnSelectLevel.setOnClickListener(new View.OnClickListener() {
             @Override

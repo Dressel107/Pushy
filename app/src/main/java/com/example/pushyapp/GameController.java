@@ -13,15 +13,15 @@ import com.example.pushyapp.Models.GameElements.Interactable;
 import com.example.pushyapp.Models.GameElements.Movable;
 import com.example.pushyapp.Models.GameElements.Player;
 import com.example.pushyapp.Models.Level;
-import com.example.pushyapp.Models.ScreenListener;
-import com.example.pushyapp.Presenter;
 
 import java.util.ArrayList;
 
+/**
+ * Definiert die Steuerung und Logik des Spielgeschehens eines Levels.
+ * @author Simon Schnitker, Dirk Dresselhaus
+ */
 public class GameController implements ScreenListener
 {
-
-
     AppCompatActivity activity;
     private Presenter presenter;
     private Level level;
@@ -40,27 +40,26 @@ public class GameController implements ScreenListener
     }
 
     /**
-     * Initialisiert Variablen, um einen fehlerfreien Start des Levels zu ermöglichen.
+     * Initialisiert u.a. Variablen, um einen fehlerfreien Start des Levels zu ermöglichen.
      * @author Simon Schnitker
      */
     private void initializeLevel()
     {
-        extractPlayerFromLevel();
-
-
         for(GameElement element : level.getElements())
         {
             element.reset();
         }
-        forceDraw();
+
+        extractPlayerFromLevel();
+        presenter.draw(level.getElements());
 
         triesCount = 1;
         startTime = System.currentTimeMillis();
     }
 
     /**
-     * Ermittelt das Player-Objekt aus den Levelelementen
-     * @author Simon Schnitker.
+     * Ermittelt das Player-Objekt aus den Levelelementen.
+     * @author Simon Schnitker
      */
     private void extractPlayerFromLevel()
     {
@@ -74,33 +73,14 @@ public class GameController implements ScreenListener
     }
 
     /**
-     * Prüft, ob das Level abgeschlossen werden kann.
-     * Dies ist nur der Fall, wenn keine Farbkugeln mehr vorhanden sind.
-     * @return Gibt zurück, ob das Level abgeschlossen werden kann.
-     * @author Simon Schnitker
-     */
-    private boolean canWin()
-    {
-        for (GameElement element : level.getElements())
-        {
-            if (element instanceof ColorSphere && element.isVisible())
-            {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    /**
      * Ermittelt das Element, das sich in der Nähe des übergebenen Elements befindet.
      * @param source Das Element, von dem das entsprechende Nachbarelement gesucht werden soll.
      * @param direction Die Richtung, in der gesucht werden soll.
-     * @param fieldCount Die Anzahl Felder, die entfernt gesucht werden soll.
+     * @param distance Die Anzahl Felder, die entfernt gesucht werden soll.
      * @author Simon Schnitker
      * @return Gibt das ermittelte GameElement zurück.
      */
-    private GameElement getNearbyElement(GameElement source, Direction direction, int fieldCount)
+    private GameElement getNearbyElement(GameElement source, Direction direction, int distance)
     {
         int targetX = source.getX();
         int targetY = source.getY();
@@ -108,16 +88,16 @@ public class GameController implements ScreenListener
         switch (direction)
         {
             case Left:
-                targetX = source.getX() - fieldCount;
+                targetX = source.getX() - distance;
                 break;
             case Right:
-                targetX = source.getX() + fieldCount;
+                targetX = source.getX() + distance;
                 break;
             case Up:
-                targetY = source.getY() - fieldCount;
+                targetY = source.getY() - distance;
                 break;
             case Down:
-                targetY = source.getY() + fieldCount;
+                targetY = source.getY() + distance;
                 break;
         }
 
@@ -130,35 +110,6 @@ public class GameController implements ScreenListener
         }
 
         return null;
-    }
-
-    // TODO: In Presenter verschieben
-    private void forceDraw()
-    {
-        presenter.drawEmptyGamefield();
-
-        for (GameElement e : level.getElements())
-        {
-            presenter.draw(e);
-        }
-    }
-
-    /**
-     *
-     * @author Simon Schnitker
-     */
-    private void won()
-    {
-        long durationInSeconds = (System.currentTimeMillis() - startTime) / 1000;
-        level.updateProgress(durationInSeconds);
-
-        System.out.println("Dauer wird aktualisiert: " + durationInSeconds);
-
-        Intent intent = new Intent(this.activity, LevelFinishedActivity.class);
-        intent.putExtra("triesCount", triesCount);
-        intent.putExtra("duration", durationInSeconds);
-        intent.putExtra("nextLevel", this.level.getId() + 1);
-        activity.startActivity(intent);
     }
 
     /**
@@ -189,7 +140,7 @@ public class GameController implements ScreenListener
         // Wenn das Element bewegbar ist
         else if (element instanceof Movable)
         {
-            int fieldCount = 2;
+            int distance = 2;
             ArrayList<Movable> movables = new ArrayList<>();
             movables.add(player);
             movables.add((Movable) element);
@@ -199,8 +150,10 @@ public class GameController implements ScreenListener
 
             while (true)
             {
-                e2 = getNearbyElement(player, direction, fieldCount);
+                // Element daneben ermitteln
+                e2 = getNearbyElement(player, direction, distance);
 
+                // Prüfen, ob die hinteren beiden Elemente der Schlange miteinander interagieren können
                 if (e2 == null || (e2 instanceof Interactable && ((Interactable) e2).tryInteract(e1)))
                 {
                     for (Movable movable : movables)
@@ -210,11 +163,13 @@ public class GameController implements ScreenListener
 
                     break;
                 }
+                // Falls nicht, prüfen, ob es Movable ist.
+                // Falls ja, das Element der Liste der später zu-bewegenden Elemente hinzufügen.
                 else if (e2 instanceof Movable)
                 {
                     movables.add((Movable) e2);
                     e1 = e2;
-                    fieldCount++;
+                    distance++;
                 }
                 else
                 {
@@ -223,18 +178,61 @@ public class GameController implements ScreenListener
             }
         }
 
-        forceDraw();
+        presenter.draw(level.getElements());
     }
 
+    /**
+     * Prüft, ob das Level abgeschlossen werden kann.
+     * Dies ist nur der Fall, wenn keine Farbkugeln mehr vorhanden sind.
+     * @return Gibt zurück, ob das Level abgeschlossen werden kann.
+     * @author Simon Schnitker
+     */
+    private boolean canWin()
+    {
+        for (GameElement element : level.getElements())
+        {
+            if (element instanceof ColorSphere && element.isVisible())
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Ruft den Ergebnisbildschirm auf.
+     * @author Simon Schnitker
+     */
+    private void won()
+    {
+        long durationInSeconds = (System.currentTimeMillis() - startTime) / 1000;
+        level.updateProgress(durationInSeconds);
+
+        Intent intent = new Intent(activity, LevelFinishedActivity.class);
+        intent.putExtra("triesCount", triesCount);
+        intent.putExtra("duration", durationInSeconds);
+        intent.putExtra("nextLevel", level.getId() + 1);
+        activity.startActivity(intent);
+    }
+
+    /**
+     * Startet das Level neu.
+     * @author Dirk Dresselhaus.
+     */
     public void restart(){
         for(GameElement element : level.getElements()){
             element.reset();
         }
         triesCount++;
         startTime = System.currentTimeMillis();
-        forceDraw();
+        presenter.draw(level.getElements());
     }
 
+    /**
+     * Setzt den Zustand aller GameElement-Objekte zurück, um das Level beenden zu können.
+     * @author Dirk Dresselhaus.
+     */
     public void cancel() {
         for(GameElement element : level.getElements()){
             element.reset();

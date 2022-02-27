@@ -9,11 +9,16 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.pushyapp.Helpers.TimeHelper;
 import com.example.pushyapp.Models.Level;
 import com.example.pushyapp.R;
 
 import java.util.ArrayList;
 
+/**
+ * Dient dem Setzen von Texten und weiteren Werten von Level-Objekten in den Items der Levelauswahl-ListView.
+ * @author Simon Schnitker
+ */
 public class LevelListItemAdapter extends ArrayAdapter<Level>
 {
     private final Activity context;
@@ -36,29 +41,20 @@ public class LevelListItemAdapter extends ArrayAdapter<Level>
         TextView neededTimeText = (TextView) rowView.findViewById(R.id.level_needed_time);
         ImageView hasLevelFinishedIcon = (ImageView) rowView.findViewById(R.id.has_level_finished_icon);
 
-        hasLevelFinishedIcon.setVisibility(View.VISIBLE);
-        titleText.setText("Level " + (levels.get(position).getId() + 1));
         long duration = levels.get(position).getDurationInSeconds();
-        String durationText;
+        titleText.setText("Level " + (levels.get(position).getId() + 1));
+        neededTimeText.setText(TimeHelper.getDurationText(context, duration));
 
-        if (duration == 0)
+        // Grünes Häckchen nur setzen, falls das Level bereits absolviert wurde
+        if (duration > 0)
         {
-            durationText = "--:--";
-            hasLevelFinishedIcon.setVisibility(View.INVISIBLE);
-        }
-        else if (duration < 60)
-        {
-            durationText = duration + " " + context.getResources().getString(R.string.seconds);
+            hasLevelFinishedIcon.setVisibility(View.VISIBLE);
         }
         else
         {
-            long minutes = duration / 60;
-            long seconds = duration - (minutes * 60);
-
-            durationText = minutes + ":" + seconds + " " + context.getResources().getString(R.string.minuts);
+            hasLevelFinishedIcon.setVisibility(View.INVISIBLE);
         }
 
-        neededTimeText.setText(durationText);
         return rowView;
     }
 }

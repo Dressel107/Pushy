@@ -1,8 +1,6 @@
-package com.example.pushyapp.Services;
+package com.example.pushyapp.Services.LocalDatabase;
 
-import androidx.room.Room;
-
-import com.example.pushyapp.Models.LevelPool;
+import com.example.pushyapp.LevelPool;
 
 public final class AppDatabaseHandler
 {

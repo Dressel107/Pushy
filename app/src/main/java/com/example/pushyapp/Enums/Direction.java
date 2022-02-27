@@ -1,7 +1,7 @@
 package com.example.pushyapp.Enums;
 
 /**
- * Definiert eine Richtung.
+ * Definiert eine Richtungsangabe.
  * @author Simon Schnitker
  */
 public enum Direction

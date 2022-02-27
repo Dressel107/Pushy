@@ -1,4 +1,4 @@
-package com.example.pushyapp.Services;
+package com.example.pushyapp.Services.LocalDatabase;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
@@ -9,6 +9,10 @@ import com.example.pushyapp.Models.Level;
 
 import java.util.ArrayList;
 
+/**
+ * Beschreibt den Aufbau des Datenzugriffobjekts für Level.
+ * @author Simon Schnitker
+ */
 @Dao
 public interface LevelDao
 {

@@ -12,5 +12,6 @@
     <string name="german">German</string>
     <string name="english">English</string>
     <string name="seconds">Seconds</string>
-    <string name="minuts">Minuts</string>
+    <string name="minutes">Minutes</string>
+    <string name="level_selection">Level selection</string>
 </resources>

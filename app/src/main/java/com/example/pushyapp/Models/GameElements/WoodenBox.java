@@ -12,7 +12,11 @@ public class WoodenBox extends GameElement implements Movable
         super(x, y, res);
     }
 
-
+    /**
+     * Bewegt das Element in die angegebene Richtung.
+     * @param direction Die Richtung, in der sich das Element bewegen soll.
+     * @author Simon Schnitker
+     */
     @Override
     public void move(Direction direction)
     {

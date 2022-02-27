@@ -12,8 +12,7 @@ import com.example.pushyapp.Enums.Direction;
 import com.example.pushyapp.Models.GameElements.Floor;
 import com.example.pushyapp.Models.GameElements.GameElement;
 import com.example.pushyapp.Models.GameElements.Wall;
-import com.example.pushyapp.Models.ScreenListener;
-import com.example.pushyapp.Services.OnSwipeTouchListener;
+import com.example.pushyapp.Helpers.OnSwipeTouchListener;
 
 import java.util.ArrayList;
 
@@ -72,7 +71,7 @@ public class Presenter extends AppCompatActivity {
         drawEmptyGamefield();
         for (GameElement element : gameElements)
         {
-            draw(element);
+            drawElement(element);
         }
     }
 
@@ -105,7 +104,7 @@ public class Presenter extends AppCompatActivity {
      * @param gameElement das zu zeichnende GameElement
      * @author Dirk Dresselhaus
      */
-    public void draw(GameElement gameElement){
+    private void drawElement(GameElement gameElement){
         if (!gameElement.isVisible()){
             return;
         }
@@ -121,21 +120,33 @@ public class Presenter extends AppCompatActivity {
      * Zeichen eine Spielfeld ohne GameElements anhand der Anzahl der Zeilen und Spalten
      * @author Dirk Dresselhaus
      */
-    public void drawEmptyGamefield(){
+    private void drawEmptyGamefield(){
             for(int i = 0; i < horizontalFieldsCount; i++){
                 for(int j = 0; j < verticalFieldsCount; j++){
                     if(i == 0 || i == horizontalFieldsCount - 1 || j == 0 || j == verticalFieldsCount - 1){
-                        draw(new Wall(i, j, elementSize));
+                        drawElement(new Wall(i, j, elementSize));
                     }else {
-                        draw(new Floor(i, j, elementSize));
+                        drawElement(new Floor(i, j, elementSize));
                     }
                 }
             }
+    }
+
+    /**
+     * Zeichen das Spielfeld mit den übergebenen Elementen auf dem Screen
+     * @param elements Die zu zeichnenden Elemente
+     * @author Dirk Dresselhaus
+     */
+    public void draw(ArrayList<GameElement> elements) {
+        drawEmptyGamefield();
+
+        for (GameElement element : elements) {
+            drawElement(element);
+        }
     }
 
     public void setScreenListener(ScreenListener listener)
     {
         this.listener = listener;
     }
-
 }

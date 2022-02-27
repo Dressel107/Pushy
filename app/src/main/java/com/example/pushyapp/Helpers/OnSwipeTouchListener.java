@@ -1,4 +1,4 @@
-package com.example.pushyapp.Services;
+package com.example.pushyapp.Helpers;
 
 import android.content.Context;
 import android.view.GestureDetector;
@@ -7,7 +7,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 
-//Quelle https://stackoverflow.com/questions/4139288/android-how-to-handle-right-to-left-swipe-gestures
+/**
+ * Stellt eine Möglichkeit bereit, Wisch-Gesten auf dem Gerät erkennen zu können.
+ * @source https://stackoverflow.com/questions/4139288/android-how-to-handle-right-to-left-swipe-gestures
+ * @author Dirk Dresselhaus
+ */
 public class OnSwipeTouchListener implements OnTouchListener {
 
     private final GestureDetector gestureDetector;

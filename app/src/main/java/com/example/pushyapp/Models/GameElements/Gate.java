@@ -2,6 +2,10 @@ package com.example.pushyapp.Models.GameElements;
 
 import com.example.pushyapp.R;
 
+/**
+ * Definiert den Aufbau eines Tores.
+ * @author Simon Schnitker
+ */
 public class Gate extends GameElement implements Interactable {
     private static final int res = R.drawable.gate_lock;
     private static final int res2 = R.drawable.gate_open;
@@ -23,6 +27,10 @@ public class Gate extends GameElement implements Interactable {
         setRes(res2);
     }
 
+    /**
+     * Setzt den Zustand des Elements zurück.
+     * @author Simon Schnitker
+     */
     public void reset()
     {
         super.reset();
@@ -35,6 +43,13 @@ public class Gate extends GameElement implements Interactable {
         return isOpen;
     }
 
+    /**
+     * Versucht, das zugrundeliegende Objekt mit dem übergebenen Objekt interagieren zu lassen.
+     * Eine Interaktion ist mit den Elementen "Player" und "Key" möglich.
+     * @param element Das Element, mit dem interagiert werden soll.
+     * @return Gibt true zurück, falls die Interaktion möglich war oder das Tor geöffnet ist, andernfalls false.
+     * @author Simon Schnitker
+     */
     @Override
     public boolean tryInteract(GameElement element)
     {
@@ -42,7 +57,8 @@ public class Gate extends GameElement implements Interactable {
         {
             return true;
         }
-        else if (element instanceof Key)
+
+        if (element instanceof Key)
         {
             if (isOpen == false)
             {
@@ -56,7 +72,7 @@ public class Gate extends GameElement implements Interactable {
         {
             if (((Player) element).tryUsingKey())
             {
-                open();
+                this.open();
                 return true;
             }
         }

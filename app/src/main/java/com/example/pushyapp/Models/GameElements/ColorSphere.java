@@ -4,6 +4,10 @@ import com.example.pushyapp.Enums.Color;
 import com.example.pushyapp.Enums.Direction;
 import com.example.pushyapp.R;
 
+/**
+ * Definiert den Aufbau einer Kugel.
+ * @author Simon Schnitker
+ */
 public class ColorSphere extends GameElement implements Interactable, Movable {
     private static final int res = R.drawable.colorsphere;
     private static final int res2 = R.drawable.colorsphere_red;
@@ -44,6 +48,11 @@ public class ColorSphere extends GameElement implements Interactable, Movable {
         }
     }
 
+    /**
+     * Bewegt das Element in die angegebene Richtung.
+     * @param direction Die Richtung, in der sich das Element bewegen soll.
+     * @author Simon Schnitker
+     */
     @Override
     public void move(Direction direction)
     {
@@ -64,6 +73,13 @@ public class ColorSphere extends GameElement implements Interactable, Movable {
         }
     }
 
+    /**
+     * Versucht, das zugrundeliegende Objekt mit dem übergebenen Objekt interagieren zu lassen.
+     * Eine Interaktion ist mit den Elementen "ColorSplash" und "ColorArea" möglich.
+     * @param element Das Element, mit dem interagiert werden soll.
+     * @return Gibt true zurück, falls die Interaktion möglich war, andernfalls false.
+     * @author Simon Schnitker
+     */
     @Override
     public boolean tryInteract(GameElement element)
     {

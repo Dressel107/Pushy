@@ -8,7 +8,7 @@
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/border"
+        android:background="@drawable/level_list_item_border"
         android:padding="24dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
@@ -46,33 +46,5 @@
             android:src="@drawable/check"
             android:layout_width="60dp"
             android:layout_height="60dp"></ImageView>
-
-<!--        <LinearLayout-->
-<!--            android:layout_column="1"-->
-<!--            android:layout_gravity="fill_vertical|right">-->
-
-<!--            <ImageView-->
-<!--                android:layout_width="30dp"-->
-<!--                android:layout_height="30dp"-->
-<!--                android:layout_gravity="center_vertical"-->
-<!--                android:layout_marginTop="6dp"-->
-<!--                android:src="@drawable/star"></ImageView>-->
-
-<!--            <ImageView-->
-<!--                android:layout_width="30dp"-->
-<!--                android:layout_height="30dp"-->
-<!--                android:src="@drawable/star"-->
-<!--                android:layout_gravity="center_vertical"-->
-<!--                android:layout_marginLeft="8px"-->
-<!--                android:layout_marginTop="-6dp"></ImageView>-->
-
-<!--            <ImageView-->
-<!--                android:layout_width="30dp"-->
-<!--                android:layout_height="30dp"-->
-<!--                android:src="@drawable/star"-->
-<!--                android:layout_gravity="center_vertical"-->
-<!--                android:layout_marginTop="6dp"-->
-<!--                android:layout_marginLeft="8px"></ImageView>-->
-<!--        </LinearLayout>-->
     </GridLayout>
 </GridLayout>

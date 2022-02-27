@@ -62,13 +62,18 @@ public abstract class GameElement
         this.isVisible = true;
     }
 
+    /**
+     * Setzt den Zustand des Elements zurück.
+     * @authoer Dirk Dresselhaus
+     */
     public void reset(){
         this.x = startX;
         this.y = startY;
         this.isVisible = true;
     }
 
-    public GameElement(int res){
+    public GameElement(int res)
+    {
         this.res = res;
     }
 

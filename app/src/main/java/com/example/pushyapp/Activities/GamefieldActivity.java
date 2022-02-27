@@ -8,10 +8,8 @@ import android.view.MenuItem;
 import com.example.pushyapp.GameController;
 
 import com.example.pushyapp.Models.Level;
-import com.example.pushyapp.Models.LevelPool;
+import com.example.pushyapp.LevelPool;
 import com.example.pushyapp.R;
-
-
 
 public class GamefieldActivity extends AppCompatActivity
 {
@@ -25,6 +23,7 @@ public class GamefieldActivity extends AppCompatActivity
         // Übergebene Level-ID ermitteln
         Bundle extras = getIntent().getExtras();
         Level level = LevelPool.getLevel(extras.getInt("id"));
+        getSupportActionBar().setTitle("Level " + (level.getId() + 1));
 
         // Spiel mit Level starten
         this.controller = new GameController(this, level);

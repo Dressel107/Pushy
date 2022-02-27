@@ -62,4 +62,14 @@ public class Switch extends GameElement implements Interactable {
             this.setRes(res2);
         }
     }
+
+    /**
+     * Setzt den Zustand des Elements zurück.
+     * @author Dirk Dresselhaus
+     */
+    public void reset(){
+        super.reset();
+        this.isOn = false;
+        this.setRes(res);
+    }
 }

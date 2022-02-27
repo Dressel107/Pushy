@@ -1,10 +1,15 @@
 package com.example.pushyapp.Models.GameElements;
 
 import junit.framework.TestCase;
+
+import org.junit.Test;
+
 /**
  * @Author Dirk Dresselhaus
  */
 public class GateTest extends TestCase {
+
+    @Test
     public void testTryInteract() {
 
         Gate gate = new Gate(1,1);

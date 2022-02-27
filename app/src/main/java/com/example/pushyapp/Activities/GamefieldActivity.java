@@ -11,10 +11,21 @@ import com.example.pushyapp.Models.Level;
 import com.example.pushyapp.LevelPool;
 import com.example.pushyapp.R;
 
+/**
+ * Ermöglich das Spielen eines Levels
+ * @Author Dirk Dresselhaus, Simon Schnitker
+ */
+
+
 public class GamefieldActivity extends AppCompatActivity
 {
     private GameController controller;
 
+    /**
+     * Setz das in den Extras hinterlegte Level als Titel in der Actionbar und
+     * initialisiert mit diesem zusammen mit der Activitey den GameController
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -29,15 +40,26 @@ public class GamefieldActivity extends AppCompatActivity
         this.controller = new GameController(this, level);
     }
 
+    /**
+     * Setz  das übergebene Menü als Actionbar
+     * @param menu wird als Actionbar verwendet
+     * @source https://stackoverflow.com/questions/4139288/android-how-to-handle-right-to-left-swipe-gestures
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_gamefield, menu);
         return true;
     }
 
+    /**
+     * Erfasst welches Item in der Actionbar engeclickt wurde und ruft dem entsprechend eine Methode auf
+     * @param item ist das angeclickte Item
+     * @source https://stackoverflow.com/questions/4139288/android-how-to-handle-right-to-left-swipe-gestures
+     */
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        //handle presses on the action bar items
+
         switch (item.getItemId()) {
 
             case R.id.reset:
@@ -46,8 +68,6 @@ public class GamefieldActivity extends AppCompatActivity
 
             case R.id.close:
                 this.controller.cancel();
-                Intent intent2 = new Intent(this, LevelSelectionActivity.class);
-                startActivity(intent2);
                 finish();
                 return true;
 

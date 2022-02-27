@@ -74,43 +74,74 @@ public class LevelPool
 
         // Level 2
         ArrayList<GameElement> level2Elements = new ArrayList<>();
-        level2Elements.add(new Wall(2,11));
-        level2Elements.add(new Wall(3,11));
-        level2Elements.add(new Wall(4,11));
-        level2Elements.add(new Wall(5,11));
-        level2Elements.add(new Wall(6,11));
-        level2Elements.add(new Wall(7,11));
-        level2Elements.add(new Wall(8,11));
-        level2Elements.add(new Wall(5,1));
-        level2Elements.add(new Wall(5,2));
-        level2Elements.add(new Wall(5,3));
-        level2Elements.add(new Wall(5,4));
-        level2Elements.add(new Wall(6,1));
-        level2Elements.add(new Wall(7,1));
-        level2Elements.add(new Wall(5,5));
-        level2Elements.add(new Wall(5,9));
-        level2Elements.add(new Wall(6,9));
-        level2Elements.add(new Wall(7,9));
-        level2Elements.add(new Wall(8,9));
-        level2Elements.add(new Wall(4,2));
+        level2Elements.add(new Wall(3,1));
         level2Elements.add(new Wall(3,2));
-        level2Elements.add(new Wall(2,2));
-        level2Elements.add(new WoodenBox(3,10));
-        level2Elements.add(new WoodenBox(2, 13));
-        level2Elements.add(new WoodenBox(8,3));
-        level2Elements.add(new WoodenBox(6,3));
-        level2Elements.add(new Key(8,10));
-        level2Elements.add(new Gate(1,2));
-        level2Elements.add(new ColorSphere(7,3, Color.Red));
-        level2Elements.add(new ColorSphere(7,12, Color.Blue));
-        level2Elements.add(new ColorSplash(4,5, Color.Blue));
-        level2Elements.add(new ColorArea(1,9, Color.Blue));
-        level2Elements.add(new Goal(4,1));
-        level2Elements.add(new Player(3,13));
-        levels.add(new Level(1, level2Elements, 10, 15));
+        level2Elements.add(new Wall(3,3));
+        level2Elements.add(new Wall(1,3));
+
+        level2Elements.add(new Key(8,1));
+        level2Elements.add(new Wall(6,1));
+        level2Elements.add(new Wall(6,2));
+        level2Elements.add(new Wall(6,3));
+        level2Elements.add(new Wall(8,3));
+
+        level2Elements.add(new Wall(1,9));
+        level2Elements.add(new Wall(3,9));
+        level2Elements.add(new Wall(3,10));
+        level2Elements.add(new Wall(3,11));
+
+        level2Elements.add(new Wall(8,9));
+        level2Elements.add(new Wall(6,9));
+        level2Elements.add(new Wall(6,10));
+        level2Elements.add(new Wall(6,11));
+
+
+
+        level2Elements.add(new Gate(2,9));
+        SwitchGate switchGate = new SwitchGate(2,3);
+        level2Elements.add(switchGate);
+        level2Elements.add(new Switch(1,11,switchGate));
+        level2Elements.add(new Goal(1, 1));
+        level2Elements.add(new Player(8, 11));
+        levels.add(new Level(1, level2Elements, 10, 13));
 
         // Level 3
-        ArrayList<GameElement> level3Elements = new ArrayList<>();
+        ArrayList<GameElement> level3elements = new ArrayList<>();
+        level3elements.add(new Wall(2,11));
+        level3elements.add(new Wall(3,11));
+        level3elements.add(new Wall(4,11));
+        level3elements.add(new Wall(5,11));
+        level3elements.add(new Wall(6,11));
+        level3elements.add(new Wall(7,11));
+        level3elements.add(new Wall(8,11));
+        level3elements.add(new Wall(5,1));
+        level3elements.add(new Wall(5,2));
+        level3elements.add(new Wall(5,3));
+        level3elements.add(new Wall(5,4));
+        level3elements.add(new Wall(6,1));
+        level3elements.add(new Wall(7,1));
+        level3elements.add(new Wall(5,5));
+        level3elements.add(new Wall(5,9));
+        level3elements.add(new Wall(6,9));
+        level3elements.add(new Wall(7,9));
+        level3elements.add(new Wall(8,9));
+        level3elements.add(new Wall(4,2));
+        level3elements.add(new Wall(3,2));
+        level3elements.add(new Wall(2,2));
+        level3elements.add(new WoodenBox(3,10));
+        level3elements.add(new WoodenBox(2, 13));
+        level3elements.add(new WoodenBox(8,3));
+        level3elements.add(new WoodenBox(6,3));
+        level3elements.add(new Key(8,10));
+        level3elements.add(new Gate(1,2));
+        level3elements.add(new ColorSphere(7,3, Color.Red));
+        level3elements.add(new ColorSphere(7,12, Color.Blue));
+        level3elements.add(new ColorSplash(4,5, Color.Blue));
+        level3elements.add(new ColorArea(1,9, Color.Blue));
+        level3elements.add(new Goal(4,1));
+        level3elements.add(new Player(3,13));
+        levels.add(new Level(2, level3elements, 10, 15));
+
     }
 
     /**

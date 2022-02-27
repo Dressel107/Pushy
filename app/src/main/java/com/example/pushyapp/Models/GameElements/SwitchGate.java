@@ -43,6 +43,15 @@ public class SwitchGate extends GameElement implements Interactable
         setRes(res);
     }
 
+    /**
+     * Setzt den Zustand des Elements zurück.
+     * @author Dirk Dresselhaus
+     */
+    public void reset(){
+        super.reset();
+        this.close();
+    }
+
     public boolean isOpen()
     {
         return isOpen;

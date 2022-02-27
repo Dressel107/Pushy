@@ -33,8 +33,13 @@ public class ColorSphereTest extends TestCase {
     public void testTryInteract() {
         ColorSphere colorSphere = new ColorSphere(5,5, Color.Blue);
         ColorSplash colorSplash = new ColorSplash(3,3 ,Color.Red);
+        ColorArea colorArea = new ColorArea( 4,4, Color.Red);
+
         colorSphere.tryInteract(colorSplash);
         assertEquals(Color.Red, colorSphere.getColor());
+
+        colorSphere.tryInteract(colorArea);
+        assertEquals(false, colorSphere.isVisible());
 
     }
 }

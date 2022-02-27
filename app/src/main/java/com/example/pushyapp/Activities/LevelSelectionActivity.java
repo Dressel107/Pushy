@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import com.example.pushyapp.ListAdapters.LevelListItemAdapter;
+import com.example.pushyapp.Others.LevelListItemAdapter;
 import com.example.pushyapp.LevelPool;
 import com.example.pushyapp.R;
 import com.example.pushyapp.Services.LocalDatabase.AppDatabase;

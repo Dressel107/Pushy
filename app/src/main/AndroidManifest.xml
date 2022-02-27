@@ -13,10 +13,12 @@
 
         <activity
             android:name=".Activities.GamefieldActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true" />
         <activity
             android:name=".Activities.LevelFinishedActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true" />
         <activity
             android:name=".Activities.LevelSelectionActivity"
             android:exported="true"
@@ -27,7 +29,5 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
-
 </manifest>

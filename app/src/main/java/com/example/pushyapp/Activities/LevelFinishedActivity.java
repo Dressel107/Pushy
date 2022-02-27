@@ -52,8 +52,7 @@ public class LevelFinishedActivity extends AppCompatActivity  {
         btnSelectLevel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LevelFinishedActivity.this, LevelSelectionActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
 
@@ -61,8 +60,7 @@ public class LevelFinishedActivity extends AppCompatActivity  {
             @Override
             public void onClick(View view) {
                 if(nextLevelID >= LevelPool.getAll().size()){
-                    Intent intent = new Intent(LevelFinishedActivity.this, LevelSelectionActivity.class);
-                    startActivity(intent);
+                    finish();
                 }else{
                     Intent intent = new Intent(LevelFinishedActivity.this, GamefieldActivity.class);
                     intent.putExtra("id", nextLevelID);

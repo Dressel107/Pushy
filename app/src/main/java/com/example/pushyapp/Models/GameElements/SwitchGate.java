@@ -17,18 +17,17 @@ public class SwitchGate extends GameElement implements Interactable
      */
     private boolean isOpen;
 
-    public SwitchGate(int x, int y)
-    {
+    public SwitchGate(int x, int y) {
         super(x, y, res);
         isOpen = false;
     }
+
 
     /**
      * Öffnet das Tor.
      * @author Dirk Dresselhaus
      */
-    public void open()
-    {
+    public void open() {
         this.isOpen = true;
         setRes(res2);
     }
@@ -37,8 +36,7 @@ public class SwitchGate extends GameElement implements Interactable
      * Schließt das Tor.
      * @author Dirk Dresselhaus
      */
-    public void close()
-    {
+    public void close() {
         this.isOpen = false;
         setRes(res);
     }

@@ -13,7 +13,7 @@ import com.example.pushyapp.R;
 
 /**
  * Ermöglich das Spielen eines Levels
- * @Author Dirk Dresselhaus, Simon Schnitker
+ * @Author Dirk Dresselhaus
  */
 
 

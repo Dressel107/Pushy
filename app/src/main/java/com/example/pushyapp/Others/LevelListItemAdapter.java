@@ -1,4 +1,4 @@
-package com.example.pushyapp.ListAdapters;
+package com.example.pushyapp.Others;
 
 import android.app.Activity;
 import android.media.Image;

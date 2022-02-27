@@ -37,12 +37,10 @@ public class Switch extends GameElement implements Interactable {
     @Override
     public boolean tryInteract(GameElement element) {
         this.changeRes();
-        if (gate.isOpen())
-        {
+        if (gate.isOpen()) {
             gate.close();
         }
-        else
-        {
+        else {
             gate.open();
         }
 
